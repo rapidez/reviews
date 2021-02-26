@@ -1,4 +1,4 @@
-# Rapidez Amasty Label
+# Rapidez Review
 
 ## Installation
 
