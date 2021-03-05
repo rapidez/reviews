@@ -9,7 +9,6 @@
                     </div>
                 </product-reviews>
                 <span class="ml-2 hover:underline"><a href="#reviews">@{{ data.products.items[0].reviews.items.length }} @lang('Reviews')</a></span>
-                <span class="ml-2 hover:underline"><a href="#review-form">@lang('Add Your Review')</a></span>
             </div>
         </graphql>
     </div>
