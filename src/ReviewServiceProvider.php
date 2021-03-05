@@ -1,4 +1,3 @@
-
 <?php
 
 namespace Rapidez\Review;
@@ -15,12 +14,10 @@ class ReviewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'review');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/review'),
         ], 'views');
     }
 }
