@@ -1,0 +1,45 @@
+{
+  products(
+    filter: {
+      sku: {
+        eq: "{{ $sku }}"
+      }
+    }
+  ) {
+    items {
+      sku
+      rating_summary
+      ... on SimpleProduct {
+        reviews(pageSize: 20 currentPage: 1) {
+          items {
+            average_rating
+            created_at
+            ratings_breakdown {
+              name
+              value
+            }
+            nickname
+            summary
+            text
+          }
+        }
+      }
+      ... on ConfigurableProduct {
+        reviews(pageSize: 20 currentPage: 1) {
+          items {
+            average_rating
+            created_at
+            ratings_breakdown {
+              name
+              value
+            }
+            nickname
+            summary
+            text
+          }
+        }
+      }
+    }
+  }
+}
+
