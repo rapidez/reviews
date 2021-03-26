@@ -1,5 +1,5 @@
 <div id="reviews" class="w-full">
-    <graphql v-cloak query='@include('review::queries.reviews', ['sku' => $product->sku])'>
+    <graphql v-cloak query='@include('reviews::queries.reviews', ['sku' => $product->sku])'>
         <div slot-scope="{ data }" v-if="data">
             <h2 class="font-bold text-2xl mt-8">@lang('Customer Reviews')</h2>
             <div v-for="review in data.products.items[0].reviews.items" class="flex items-start w-full md:max-w-xl bg-gray-200 rounded p-3 mt-3">

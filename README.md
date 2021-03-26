@@ -1,10 +1,10 @@
-# Rapidez Review
+# Rapidez Reviews
 ## Installation
 ```
-composer require rapidez/review
+composer require rapidez/reviews
 ```
 
-After installation add `require('Vendor/rapidez/review/resources/js/app.js');` to `resources/js/app.js`.
+After installation add `require('Vendor/rapidez/reviews/resources/js/app.js');` to `resources/js/app.js`.
 
 If you haven't published the Rapidez views yet, publish them with:
 ```
@@ -30,5 +30,5 @@ Add `<product-rating :rating_summary="item.rating_summary" :reviews_count="item.
 ## Views
 If you need to change the views you can publish them with:
 ```
-php artisan vendor:publish --provider="Rapidez\Review\ReviewServiceProvider" --tag=views
+php artisan vendor:publish --provider="Rapidez\Reviews\ReviewsServiceProvider" --tag=views
 ```

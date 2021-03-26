@@ -1,5 +1,5 @@
 <div id="review-form" class="flex mt-4 mb-4 w-full">
-    <graphql v-cloak query='@include('review::queries.ratingsMetadata')'>
+    <graphql v-cloak query='@include('reviews::queries.ratingsMetadata')'>
         <div v-if="data" slot-scope="{ data }">
             <graphql-mutation v-cloak query="mutation { createProductReview ( input: changes ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }">
                 <form slot-scope="{ changes, mutate, mutated }" v-on:submit.prevent="mutate">

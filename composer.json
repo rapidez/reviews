@@ -1,6 +1,6 @@
 {
-    "name": "rapidez/review",
-    "description": "Rapidez Review",
+    "name": "rapidez/reviews",
+    "description": "Rapidez Reviews",
     "keywords": [
         "rapidez"
     ],
@@ -10,7 +10,7 @@
             "name": "Claudio Ferraro",
             "email": "claudio@justbetter.nl",
             "homepage": "https://justbetter.nl",
-            "role": "Developer"
+            "role": "Developer at JustBetter"
         }
     ],
     "minimum-stability": "dev",
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Rapidez\\Review\\": "src"
+            "Rapidez\\Reviews\\": "src"
         }
     },
     "config": {
@@ -39,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rapidez\\Review\\ReviewServiceProvider"
+                "Rapidez\\Reviews\\ReviewsServiceProvider"
             ]
         }
     }
