@@ -1,10 +1,16 @@
 # Rapidez Reviews
+
 ## Installation
+
 ```
 composer require rapidez/reviews
 ```
 
-After installation add `require('Vendor/rapidez/reviews/resources/js/app.js');` to `resources/js/app.js`.
+And register the Vue components in `resources/js/app.js`:
+```
+Vue.component('stars', require('Vendor/rapidez/reviews/resources/js/components/Stars.vue').default)
+Vue.component('star-input', require('Vendor/rapidez/reviews/resources/js/components/StarInput.vue').default)
+```
 
 If you haven't published the Rapidez views yet, publish them with:
 ```
@@ -12,22 +18,41 @@ php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --ta
 ```
 
 ### Product page
+
 #### Review stars
-Add `<product-rating :rating_summary="{{ $product->rating_summary }}" :reviews_count="{{ $product->reviews_count }}" />` where you'd like to display the product rating in stars, most likely somewhere below the product name: `resources/views/vendor/rapidez/product/overview.blade.php`.
-> Optionally you can use the prop `star_size` to change the size of the stars (default: 20), `star_class` to add a class to the active stars (default: 'text-primary') and `star_class_inactive` for the inactive stars (default: 'text-gray-400').
+
+Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
+```
+<stars score="{{ $product->reviews_score }}" count="{{ $product->reviews_count }}"></stars>
+```
+
+> Optionally you can change the classes with the `class_star`, `class_star_inactive` and `class_count` props.
 
 #### Review list
-Add `@include('review::reviews', ['sku' => $product->sku])` where you'd like to display the review list, most likely somewhere on the product overview: `resources/views/vendor/rapidez/product/overview.blade.php`.
+
+The review list can be added with:
+```
+@include('rapidez-reviews::reviews', ['sku' => $product->sku])
+```
 
 #### Review form
-Add `@include('review::review-form', ['sku' => $product->sku])` where you'd like to display the review form, most likely somewhere below the review list: `resources/views/vendor/rapidez/product/overview.blade.php`.
 
-### Product items
+And the form to add a review:
+```
+@include('rapidez-reviews::form', ['sku' => $product->sku])
+```
+
+### Product listing
+
 #### Review stars
-Add `<product-rating :rating_summary="item.rating_summary" :reviews_count="item.reviews_count" />` in the product item template to display the product rating in stars, most likely somewhere below the product name: `resources/views/category/partials/listing/item.blade.php`.
-> Optionally you can use the prop `star_size` to change the size of the stars (default: 20), `star_class` to add a class to the active stars (default: 'text-primary') and `star_class_inactive` for the inactive stars (default: 'text-gray-400').
+
+Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
+```
+<stars :score="item.reviews_score" :count="item.reviews_count"></stars>
+```
 
 ## Views
+
 If you need to change the views you can publish them with:
 ```
 php artisan vendor:publish --provider="Rapidez\Reviews\ReviewsServiceProvider" --tag=views

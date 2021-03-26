@@ -9,19 +9,14 @@ use TorMorten\Eventy\Facades\Eventy;
 
 class ReviewsServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'reviews');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez-reviews');
 
         Eventy::addFilter('product.scopes', fn () => [WithReviewsScope::class]);
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/reviews'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez-reviews'),
         ], 'views');
     }
 }

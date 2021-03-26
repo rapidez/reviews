@@ -9,17 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class WithReviewsScope implements Scope
 {
-    /**
-     * Apply the scope to a given Eloquent query builder.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @return void
-     */
     public function apply(Builder $builder, Model $model)
     {
         $builder
-            ->selectRaw('ANY_VALUE(review_entity_summary.rating_summary) AS rating_summary')
+            ->selectRaw('ANY_VALUE(review_entity_summary.rating_summary) AS reviews_score')
             ->selectRaw('ANY_VALUE(review_entity_summary.reviews_count) AS reviews_count')
             ->leftJoin('review_entity_summary', function ($join) use ($model) {
                 $join->on($model->getTable() . '.entity_id', '=', 'review_entity_summary.entity_pk_value')
