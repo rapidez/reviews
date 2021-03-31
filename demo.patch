@@ -1,5 +1,5 @@
 diff --git a/resources/views/category/partials/listing/item.blade.php b/resources/views/category/partials/listing/item.blade.php
-index 0714391..d544e34 100644
+index 0714391..35aac3e 100644
 --- a/resources/views/category/partials/listing/item.blade.php
 +++ b/resources/views/category/partials/listing/item.blade.php
 @@ -5,6 +5,7 @@
@@ -11,12 +11,12 @@ index 0714391..d544e34 100644
                      <div class="font-semibold">@{{ item.price | price}}</div>
                  @endif
 diff --git a/resources/views/product/overview.blade.php b/resources/views/product/overview.blade.php
-index 24d80f5..0827974 100644
+index 24d80f5..acd2436 100644
 --- a/resources/views/product/overview.blade.php
 +++ b/resources/views/product/overview.blade.php
-@@ -4,7 +4,10 @@
+@@ -4,7 +4,12 @@
  @section('description', $product->meta_description)
-
+ 
  @section('content')
 -    <h1 class="font-bold text-4xl mb-5">{{ $product->name }}</h1>
 +    <div class="flex items-center mb-5">
@@ -25,13 +25,13 @@ index 24d80f5..0827974 100644
 +            <stars :score="{{ $product->reviews_score }}" :count="{{ $product->reviews_count }}"></stars>
 +        @endif
 +    </div>
-
+ 
      <div class="flex flex-col sm:flex-row mb-5">
          <div class="sm:w-2/3 sm:mr-5">
-@@ -34,6 +37,9 @@
+@@ -34,6 +39,9 @@
          @endforeach
      </dl>
-
+ 
 +    @include('rapidez-reviews::reviews', ['sku' => $product->sku])
 +    @include('rapidez-reviews::form', ['sku' => $product->sku])
 +
