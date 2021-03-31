@@ -23,7 +23,9 @@ php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --ta
 
 Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
 ```
-<stars score="{{ $product->reviews_score }}" count="{{ $product->reviews_count }}"></stars>
+@if($product->reviews_score)
+    <stars score="{{ $product->reviews_score }}" count="{{ $product->reviews_count }}"></stars>
+@endif
 ```
 
 > Optionally you can change the classes with the `class_star`, `class_star_inactive` and `class_count` props.
@@ -48,7 +50,7 @@ And the form to add a review:
 
 Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
 ```
-<stars :score="item.reviews_score" :count="item.reviews_count"></stars>
+<stars v-if="item.reviews_score" :score="item.reviews_score" :count="item.reviews_count"></stars>
 ```
 
 ## Views
