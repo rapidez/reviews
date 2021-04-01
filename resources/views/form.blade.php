@@ -16,9 +16,9 @@
                             </div>
                         </div>
                         <div class="w-full flex items-center mt-2">
-                            <button type="submit" class="btn btn-primary" :disabled="$root.loading">
+                            <x-rapidez::button type="submit">
                                 @lang('Submit Review')
-                            </button>
+                            </x-rapidez::button>
                             <span v-if="mutated" class="ml-3 text-green-500">
                                 @lang('You submitted your review for moderation.')
                             </span>
