@@ -1,7 +1,7 @@
-diff --git a/resources/views/category/partials/listing/item.blade.php b/resources/views/category/partials/listing/item.blade.php
+diff --git a/resources/views/listing/partials/item.blade.php b/resources/views/listing/partials/item.blade.php
 index 0714391..35aac3e 100644
---- a/resources/views/category/partials/listing/item.blade.php
-+++ b/resources/views/category/partials/listing/item.blade.php
+--- a/resources/views/listing/partials/item.blade.php
++++ b/resources/views/listing/partials/item.blade.php
 @@ -5,6 +5,7 @@
              <x-rapidez::no-image v-else class="rounded-t h-48 mb-3"/>
              <div class="px-2">
