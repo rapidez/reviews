@@ -1,5 +1,5 @@
 diff --git a/resources/views/listing/partials/item.blade.php b/resources/views/listing/partials/item.blade.php
-index 0714391..35aac3e 100644
+index 18c2fb0..0abf84e 100644
 --- a/resources/views/listing/partials/item.blade.php
 +++ b/resources/views/listing/partials/item.blade.php
 @@ -5,6 +5,7 @@
