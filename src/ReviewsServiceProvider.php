@@ -2,7 +2,6 @@
 
 namespace Rapidez\Reviews;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Rapidez\Reviews\Models\Scopes\WithReviewsScope;
 use TorMorten\Eventy\Facades\Eventy;
