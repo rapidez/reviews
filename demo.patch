@@ -1,8 +1,8 @@
 diff --git a/resources/views/listing/partials/item.blade.php b/resources/views/listing/partials/item.blade.php
-index 18c2fb0..0abf84e 100644
+index a8ec0e9..107b33c 100644
 --- a/resources/views/listing/partials/item.blade.php
 +++ b/resources/views/listing/partials/item.blade.php
-@@ -5,6 +5,7 @@
+@@ -8,6 +8,7 @@
              <x-rapidez::no-image v-else class="rounded-t h-48 mb-3"/>
              <div class="px-2">
                  <div class="hyphens">@{{ item.name }}</div>
@@ -11,13 +11,13 @@ index 18c2fb0..0abf84e 100644
                      <div class="font-semibold">@{{ item.price | price}}</div>
                  @endif
 diff --git a/resources/views/product/overview.blade.php b/resources/views/product/overview.blade.php
-index 24d80f5..acd2436 100644
+index ce7f534..94768f6 100644
 --- a/resources/views/product/overview.blade.php
 +++ b/resources/views/product/overview.blade.php
-@@ -4,7 +4,12 @@
- @section('description', $product->meta_description)
- 
+@@ -6,7 +6,12 @@
  @section('content')
+     @include('rapidez::product.partials.breadcrumbs')
+ 
 -    <h1 class="font-bold text-4xl mb-5">{{ $product->name }}</h1>
 +    <div class="flex items-center mb-5">
 +        <h1 class="font-bold text-4xl mr-3">{{ $product->name }}</h1>
@@ -28,7 +28,7 @@ index 24d80f5..acd2436 100644
  
      <div class="flex flex-col sm:flex-row mb-5">
          <div class="sm:w-2/3 sm:mr-5">
-@@ -34,6 +39,9 @@
+@@ -36,6 +41,9 @@
          @endforeach
      </dl>
  
