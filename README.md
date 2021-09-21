@@ -28,7 +28,7 @@ Add the stars where you'd like in `resources/views/vendor/rapidez/product/overvi
 @endif
 ```
 
-> Optionally you can change the classes with the `class_star`, `class_star_inactive` and `class_count` props.
+> Optionally you can change the classes with the `class-star`, `class-star-inactive` and `class-count` props.
 
 #### Review list
 
