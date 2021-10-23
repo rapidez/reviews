@@ -1,6 +1,6 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
     <div v-if="data" slot-scope="{ data }">
-        <graphql-mutation query="mutation { createProductReview ( input: changes ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :clear="true">
+        <graphql-mutation query="mutation { createProductReview ( input: changes ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :clear="true" :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}">
             <form slot-scope="{ changes, mutate, mutated }" v-on:submit.prevent="mutate">
                 <div class="w-full max-w-xl bg-white rounded-lg pt-2">
                     <strong class="text-1xl">@lang('Add Your Review')</strong>
@@ -29,3 +29,9 @@
         </graphql-mutation>
     </div>
 </graphql>
+
+@if(Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' && $key = Rapidez::config('recaptcha_frontend/type_recaptcha_v3/public_key', null, true))
+@push('head')
+<script src="https://www.google.com/recaptcha/api.js?render={{ $key }}" async defer></script>
+@endpush
+@endif
