@@ -1,5 +1,5 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $product->sku])'>
-    <div slot-scope="{ data }" v-if="data">
+    <div slot-scope="{ data }" v-if="data?.products.items[0].reviews">
         <strong class="block text-2xl mt-5">@lang('Customer Reviews')</strong>
         <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
             <meta itemprop="reviewCount" :content="data.products.items[0].reviews.items.length" />
