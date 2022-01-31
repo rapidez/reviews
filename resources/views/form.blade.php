@@ -1,6 +1,6 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
     <div v-if="data" slot-scope="{ data }">
-        <x-rapidez::recaptcha/>
+        <x-rapidez::recaptcha location="product_review"/>
         <graphql-mutation query="mutation { createProductReview ( input: changes ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :clear="true" :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}">
             <form slot-scope="{ changes, mutate, mutated }" v-on:submit.prevent="mutate">
                 <div class="w-full max-w-xl bg-white rounded-lg pt-2">
