@@ -1,14 +1,9 @@
-@php
-$reviews_count ??= 'data.products.items[0].reviews.items.length';
-$reviews_score ??= 'data.products.items[0].rating_summary';
-@endphp
-
 <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $sku])'>
     <div slot-scope="{ data }" v-if="data?.products.items[0].reviews">
         <strong class="block text-2xl mt-5">@lang('Customer Reviews')</strong>
         <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
-            <meta itemprop="reviewCount" {{ !is_numeric($reviews_count) ? 'v-bind:' : '' }}content="{{ $reviews_count }}" />
-            <meta itemprop="ratingValue" {{ !is_numeric($reviews_score) ? 'v-bind:' : '' }}content="{{ $reviews_score }}" />
+            <meta itemprop="reviewCount" content="{{ $reviews_count }}" />
+            <meta itemprop="ratingValue" content="{{ $reviews_score }}" />
             <meta itemprop="bestRating" content="100" />
         </div>
         <div v-for="review in data.products.items[0].reviews.items" class="w-full bg-gray-200 rounded p-3 mt-3" itemprop="review" itemtype="https://schema.org/Review" itemscope>
