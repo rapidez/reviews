@@ -34,7 +34,7 @@ Add the stars where you'd like in `resources/views/vendor/rapidez/product/overvi
 
 The review list can be added with:
 ```
-@include('rapidez-reviews::reviews', ['sku' => $product->sku])
+@include('rapidez-reviews::reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviews_count, 'reviews_score' => $product->reviews_score])
 ```
 
 #### Review form
