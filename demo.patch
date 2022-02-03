@@ -33,7 +33,7 @@ index 0142452..7ae05e0 100644
              @endforeach
          </dl>
 +
-+        @include('rapidez-reviews::reviews', ['sku' => $product->sku])
++        @include('rapidez-reviews::reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviews_count, 'reviews_score' => $product->reviews_score])
 +        @include('rapidez-reviews::form', ['sku' => $product->sku])
      </div>
  
