@@ -21,7 +21,7 @@
         "illuminate/database": "^8.0",
         "illuminate/support": "^8.0",
         "illuminate/view": "^8.0",
-        "rapidez/core": "~0.18"
+        "rapidez/core": "~0.49"
     },
     "autoload": {
         "psr-4": {
