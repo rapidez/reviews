@@ -1,7 +1,7 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
     <div v-if="data" slot-scope="{ data }">
         <x-rapidez::recaptcha location="product_review"/>
-        <graphql-mutation query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :variables="{ ratings: [] }" :clear="true" :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}">
+        <graphql-mutation query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :variables="{ ratings: [], sku: '{{ $sku }}' }" :clear="true" :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}">
             <form slot-scope="{ variables, mutate, mutated }" v-on:submit.prevent="mutate">
                 <div class="w-full max-w-xl bg-white rounded-lg pt-2">
                     <strong class="text-1xl">@lang('Add Your Review')</strong>
@@ -11,7 +11,6 @@
                                 <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
                                 <star-input v-model="variables.ratings[index]" :rating="rating"></star-input>
                             </div>
-                            <input type="hidden" v-bind:value="variables.sku = '{{ $sku }}'" v-on:input="variables.sku = $event" name="sku" />
                             <div class="space-y-2">
                                 <x-rapidez::input v-model="variables.nickname" name="nickname" required/>
                                 <x-rapidez::input v-model="variables.summary" name="summary" required/>
