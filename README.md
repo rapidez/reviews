@@ -17,6 +17,12 @@ If you haven't published the Rapidez views yet, publish them with:
 php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag=views
 ```
 
+### Configuration
+
+If you'd like to show product reviews on out-of-stock product pages you need to enable this setting in Magento:
+
+> Stores > Settings > Configuration > Catalog > Inventory > Stock Options > Display Out of Stock Products
+
 ### Product page
 
 #### Review stars
