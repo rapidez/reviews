@@ -1,6 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.4.1...master)
+## [Unreleased](https://github.com/org/repo/compare/0.5.0...master)
+
+## [0.5.0](https://github.com/org/repo/compare/0.4.1...0.5.0) - 2022-04-11
+
+### Changed
+
+- Laravel 9 compatibility (e53caea)
+- Lazy loaded components (afddcbf)
 
 ## [0.4.1](https://github.com/org/repo/compare/0.4.0...0.4.1) - 2022-03-17
 
@@ -105,5 +112,3 @@
 ## [0.1.0](https://github.com/org/repo/compare/4a64648df3e010eb4caa7fdcde11f194b2337e8e...0.1.0) - 2021-06-30
 
 Initial release
-
-
