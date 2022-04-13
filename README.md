@@ -30,7 +30,7 @@ If you'd like to show product reviews on out-of-stock product pages you need to 
 Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
 ```
 @if($product->reviews_score)
-    <stars score="{{ $product->reviews_score }}" count="{{ $product->reviews_count }}"></stars>
+    <stars :score="{{ $product->reviews_score }}" :count="{{ $product->reviews_count }}"></stars>
 @endif
 ```
 
@@ -40,7 +40,11 @@ Add the stars where you'd like in `resources/views/vendor/rapidez/product/overvi
 
 The review list can be added with:
 ```
-@include('rapidez-reviews::reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviews_count, 'reviews_score' => $product->reviews_score])
+@include('rapidez-reviews::reviews', [
+    'sku' => $product->sku,
+    'reviews_count' => $product->reviews_count,
+    'reviews_score' => $product->reviews_score,
+])
 ```
 
 #### Review form
