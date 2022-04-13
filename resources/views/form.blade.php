@@ -1,4 +1,4 @@
-<lazy-component>
+<lazy>
     <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
         <div v-if="data" slot-scope="{ data }">
             <x-rapidez::recaptcha location="product_review"/>
@@ -32,4 +32,4 @@
             </graphql-mutation>
         </div>
     </graphql>
-</lazy-component>
+</lazy>

@@ -1,5 +1,5 @@
 @if($reviews_score)
-    <lazy-component>
+    <lazy>
         <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', @compact('sku'))'>
             <div slot-scope="{ data }" v-if="data?.products.items[0].reviews">
                 <strong class="block text-2xl mt-5">@lang('Customer Reviews')</strong>
@@ -23,5 +23,5 @@
                 </div>
             </div>
         </graphql>
-    </lazy-component>
+    </lazy>
 @endif
