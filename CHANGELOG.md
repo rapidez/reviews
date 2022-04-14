@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.5.0...master)
+## [Unreleased](https://github.com/org/repo/compare/0.5.1...master)
+
+## [0.5.1](https://github.com/org/repo/compare/0.5.0...0.5.1) - 2022-04-13
+
+### Fixed
+
+- Use the new lazy component (85a9932)
 
 ## [0.5.0](https://github.com/org/repo/compare/0.4.1...0.5.0) - 2022-04-11
 
