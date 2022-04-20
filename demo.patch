@@ -1,17 +1,17 @@
 diff --git a/resources/views/listing/partials/item.blade.php b/resources/views/listing/partials/item.blade.php
-index 9a12a84..34bf74c 100644
+index 5ac8439..9cc26a9 100644
 --- a/resources/views/listing/partials/item.blade.php
 +++ b/resources/views/listing/partials/item.blade.php
-@@ -8,6 +8,7 @@
-             <x-rapidez::no-image v-else class="rounded-t h-48 mb-3"/>
-             <div class="px-2">
-                 <div class="hyphens">@{{ item.name }}</div>
-+                <stars class="my-1" v-if="item.reviews_score" :score="item.reviews_score" :count="item.reviews_count"></stars>
-                 @if (!Rapidez::config('catalog/frontend/show_swatches_in_product_list', 1))
-                     <div class="flex items-center space-x-2">
-                         <div class="font-semibold">@{{ (item.special_price || item.price) | price}}</div>
+@@ -9,6 +9,7 @@
+                 <x-rapidez::no-image v-else class="rounded-t h-48 mb-3"/>
+                 <div class="px-2">
+                     <div class="hyphens">@{{ item.name }}</div>
++                    <stars class="my-1" v-if="item.reviews_score" :score="item.reviews_score" :count="item.reviews_count"></stars>
+                     @if (!Rapidez::config('catalog/frontend/show_swatches_in_product_list', 1))
+                         <div class="flex items-center space-x-2">
+                             <div class="font-semibold">@{{ (item.special_price || item.price) | price}}</div>
 diff --git a/resources/views/product/overview.blade.php b/resources/views/product/overview.blade.php
-index 0142452..7ae05e0 100644
+index 9e6c55a..2978042 100644
 --- a/resources/views/product/overview.blade.php
 +++ b/resources/views/product/overview.blade.php
 @@ -7,7 +7,12 @@
@@ -28,7 +28,7 @@ index 0142452..7ae05e0 100644
  
          @include('rapidez::product.partials.microdata')
  
-@@ -38,6 +43,9 @@
+@@ -39,6 +44,9 @@
                  @endif
              @endforeach
          </dl>
