@@ -1,6 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/org/repo/compare/0.5.1...master)
+## [Unreleased](https://github.com/org/repo/compare/0.5.2...master)
+
+## [0.5.2](https://github.com/org/repo/compare/0.5.1...0.5.2) - 2022-04-20
+
+### Fixed
+
+- Demo patch update (7177827)
 
 ## [0.5.1](https://github.com/org/repo/compare/0.5.0...0.5.1) - 2022-04-13
 
