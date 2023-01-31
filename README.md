@@ -6,10 +6,9 @@
 composer require rapidez/reviews
 ```
 
-And register the Vue components in `resources/js/app.js`:
+And register reviews.js in `resources/js/app.js`:
 ```
-Vue.component('stars', require('Vendor/rapidez/reviews/resources/js/components/Stars.vue').default)
-Vue.component('star-input', require('Vendor/rapidez/reviews/resources/js/components/StarInput.vue').default)
+import("Vendor/rapidez/reviews/resources/js/reviews.js")
 ```
 
 If you haven't published the Rapidez views yet, publish them with:
