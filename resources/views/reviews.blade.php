@@ -28,7 +28,7 @@
         <div class="flex items-center gap-2 text-secondary">
             <strong itemprop="name">@lang('No reviews found')</strong>
             <span class="text-xs">
-                {{ Carbon::now()->toDateString() }}
+                @{{ new Date(Date.now()).toLocaleDateString() }}
             </span>
         </div>
         <stars class="mt-1" :score="100"></stars>
