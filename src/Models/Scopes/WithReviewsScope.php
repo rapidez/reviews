@@ -18,7 +18,7 @@ class WithReviewsScope implements Scope
                     ->where('review_entity_summary.entity_type', 1)
                     ->where('review_entity_summary.store_id', config('rapidez.store'));
             })
-            ->leftJoin('review', function ($join) use ($model) {
+            ->leftJoin('review', function ($join) {
                 $join->on('review_entity_summary.primary_id', '=', 'review.review_id')
                     ->where('review.status_id', '1');
             });
