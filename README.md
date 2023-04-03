@@ -6,11 +6,6 @@
 composer require rapidez/reviews
 ```
 
-Make sure this exists in your `app.js`:
-```js
-import.meta.glob(['Vendor/rapidez/*/resources/js/app.js'], { eager: true });
-```
-
 If you haven't published the Rapidez views yet, publish them with:
 ```bash
 php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag=views
