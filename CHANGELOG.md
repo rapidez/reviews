@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/0.5.3...master)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/0.6.0...master)
+## [0.6.0](https://github.com/rapidez/reviews/releases/tag/0.6.0) - 2023-04-05
+
+#### Added
+
+- Add package.js (#12)
+
 ## [0.5.3](https://github.com/rapidez/reviews/releases/tag/0.5.3) - 2023-03-09
 
 #### Fixed
