@@ -23,7 +23,7 @@
             </div>
         </graphql>
     </lazy>
-    @else
+@else
     <div class="w-full p-8 mb-4 border rounded bg-white">
         <div class="flex items-center gap-2 text-secondary">
             <strong itemprop="name">@lang('No reviews found')</strong>
