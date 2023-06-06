@@ -25,9 +25,9 @@
                                     </div>
                                 </div>
                                 <div class="w-full flex items-center mt-2">
-                                    <x-rapidez::button @click="mutate">
+                                    <x-rapidez::button.primary @click="mutate">
                                         @lang('Submit Review')
-                                    </x-rapidez::button>
+                                    </x-rapidez::button.primary>
                                     <span v-if="mutated" class="ml-3 text-green-500">
                                         @lang('You submitted your review for moderation.')
                                     </span>
