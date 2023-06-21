@@ -3,7 +3,7 @@
         <div v-if="data" slot-scope="{ data }">
             <x-rapidez::recaptcha location="product_review"/>
             <graphql-mutation
-                query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" :variables="{ ratings: [], sku: '{{ $sku }}' }"
+                query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }"
                 :variables="{ ratings: [], sku: '{{ $sku }}' }"
                 :clear="true"
                 :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
