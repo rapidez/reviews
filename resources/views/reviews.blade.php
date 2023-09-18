@@ -1,7 +1,7 @@
 @if($reviews_score)
     <lazy>
         <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', @compact('sku'))'>
-            <div slot-scope="{ data }" v-if="data?.products.items[0].reviews" class="flex flex-col gap-4">
+            <div slot-scope="{ data }" v-if="data?.products?.items[0]?.reviews" class="flex flex-col gap-4">
                 <div class="hidden" itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
                     <meta itemprop="reviewCount" content="{{ $reviews_count }}" />
                     <meta itemprop="ratingValue" content="{{ $reviews_score }}" />
