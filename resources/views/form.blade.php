@@ -1,4 +1,4 @@
-<div class="top-5 self-start w-full rounded bg-white p-4 sm:sticky">
+<div class="top-5 self-start w-full rounded bg-white p-4">
     <x-rapidez::recaptcha location="product_review"/>
     <graphql-mutation
         query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }"
