@@ -21,7 +21,7 @@
             classStar: {
                 type: String,
                 required: false,
-                default: 'w-4 h-4 fill-current text-primary'
+                default: 'w-4 h-4 fill-current text-neutral'
             },
             classStarInactive: {
                 type: String,
