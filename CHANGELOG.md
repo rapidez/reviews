@@ -1,6 +1,13 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/0.6.1...master)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/1.0.0...master)
+## [1.0.0](https://github.com/rapidez/reviews/releases/tag/1.0.0) - 2024-02-22
+
+### Changed
+
+- Improve frontend (#16)
+- Removed incorrect join (#24)
+
 ## [0.6.1](https://github.com/rapidez/reviews/releases/tag/0.6.1) - 2023-09-22
 
 ### Added
