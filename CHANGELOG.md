@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/1.0.0...master)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/1.1.0...master)
+## [1.1.0](https://github.com/rapidez/reviews/releases/tag/1.1.0) - 2024-03-05
+
+### Added
+
+- Rapidez v2 support (#25)
+
 ## [1.0.0](https://github.com/rapidez/reviews/releases/tag/1.0.0) - 2024-02-22
 
 ### Changed
