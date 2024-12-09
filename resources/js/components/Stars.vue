@@ -21,17 +21,17 @@
             classStar: {
                 type: String,
                 required: false,
-                default: 'w-4 h-4 fill-current text-neutral'
+                default: 'size-4 fill-current text'
             },
             classStarInactive: {
                 type: String,
                 required: false,
-                default: 'w-4 h-4 fill-current text-gray-400'
+                default: 'size-4 fill-current text-muted'
             },
             classCount: {
                 type: String,
                 required: false,
-                default: 'text-gray-500 text-sm'
+                default: 'text-muted text-sm'
             }
         },
         computed: {
