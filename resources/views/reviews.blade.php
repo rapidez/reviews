@@ -8,7 +8,7 @@
                     <meta itemprop="bestRating" content="100" />
                 </div>
                 <div v-for="review in data.products.items[0].reviews.items" class="w-full p-8 border rounded bg-white" itemprop="review" itemtype="https://schema.org/Review" itemscope>
-                    <div class="flex items-center gap-2 text-inactive" itemprop="author" itemtype="https://schema.org/Person" itemscope>
+                    <div class="flex items-center gap-2 text-muted" itemprop="author" itemtype="https://schema.org/Person" itemscope>
                         <strong itemprop="name">@{{ review.nickname }}</strong>
                         <span class="text-xs">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
                     </div>
@@ -25,7 +25,7 @@
     </lazy>
 @else
     <div class="w-full p-8 mb-4 border rounded bg-white">
-        <div class="flex items-center gap-2 text-inactive">
+        <div class="flex items-center gap-2 text-muted">
             <strong itemprop="name">@lang('No reviews found')</strong>
             <span class="text-xs">
                 @{{ new Date(Date.now()).toLocaleDateString() }}
