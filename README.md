@@ -24,7 +24,7 @@ If you'd like to show product reviews on out-of-stock product pages you need to 
 Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
 ```blade
 @if($product->reviews_score)
-    <stars :score="{{ $product->reviews_score }}" :count="{{ $product->reviews_count }}"></stars>
+    <x-rapidez-reviews::stars :score="$product->reviews_score" :count="$product->reviews_count" />
 @endif
 ```
 
@@ -54,7 +54,8 @@ And the form to add a review:
 
 Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
 ```blade
-<stars v-if="item.reviews_score" :score="item.reviews_score" :count="item.reviews_count"></stars>
+<x-rapidez-reviews::stars v-if="item.reviews_count" v-bind:count="item.reviews_count" v-bind:score="item.reviews_score"/>
+
 ```
 
 ## Views

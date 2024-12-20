@@ -15,7 +15,7 @@
                     <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
                         <meta itemprop="ratingValue" v-bind:content="review.average_rating" />
                         <meta itemprop="bestRating" content="100" />
-                        <stars class="mt-1" v-bind:score="review.average_rating"></stars>
+                        <x-rapidez-reviews::stars v-bind:score="review.average_rating" />
                     </div>
                     <strong class="block mt-3" itemprop="name">@{{ review.summary }}</strong>
                     <p class="mt-1 text-sm" itemprop="reviewBody">@{{ review.text }}</p>
@@ -31,7 +31,7 @@
                 @{{ new Date(Date.now()).toLocaleDateString() }}
             </span>
         </div>
-        <stars class="mt-1" :score="100"></stars>
+        <x-rapidez-reviews::stars />
         <strong class="block mt-3">
             @lang('Be the first to write a review')
         </strong>
