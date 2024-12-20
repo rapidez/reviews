@@ -19,9 +19,9 @@
                                         <div class="flex items-center gap-0.5">
                                             <label
                                                 v-for="ratingValue in rating.values"
-                                                class="cursor-pointer text-muted/70 hover:text-conversion [&:has(~label:hover)]:text-conversion"
+                                                class="cursor-pointer text-muted/50 hover:text-yellow-400 [&:has(~label:hover)]:text-yellow-400"
                                                 v-bind:class="{
-                                                    '!text-conversion': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    '!text-yellow-400': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
                                             >
