@@ -8,10 +8,8 @@
             @endfor
         </div>
         <div
-            style="width: {{ $score }}%"
-            @if ($attributes->has('v-bind:score'))
-                v-bind:style="{ width: ({{ $attributes['v-bind:score'] }} || 0) + '%'}"
-            @endif
+            style="width: {{ (int)$score }}%"
+            v-bind:style="{ width: ({{ $score }} || 0) + '%'}"
             class="absolute inset-0 flex gap-0.5 overflow-hidden"
         >
             @for ($star = 0; $star < 5; $star++)
