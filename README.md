@@ -54,7 +54,7 @@ And the form to add a review:
 
 Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
 ```blade
-<x-rapidez-reviews::stars v-if="item.reviews_count" v-bind:count="item.reviews_count" v-bind:score="item.reviews_score"/>
+<x-rapidez-reviews::stars v-if="item.reviews_count" count="item.reviews_count" score="item.reviews_score"/>
 
 ```
 

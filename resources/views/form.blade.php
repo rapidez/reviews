@@ -62,7 +62,7 @@
                             <x-rapidez::button.secondary type="submit">
                                 @lang('Submit Review')
                             </x-rapidez::button.secondary>
-                            <span v-if="mutated" v-cloak class="ml-3 text-green-500">
+                            <span v-if="mutated" class="ml-3 text-green-500" v-cloak>
                                 @lang('You submitted your review for moderation.')
                             </span>
                         </div>
