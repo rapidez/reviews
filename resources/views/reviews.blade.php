@@ -15,7 +15,7 @@
                     <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
                         <meta itemprop="ratingValue" v-bind:content="review.average_rating" />
                         <meta itemprop="bestRating" content="100" />
-                        <x-rapidez-reviews::stars v-bind:score="review.average_rating" />
+                        <x-rapidez-reviews::stars score="review.average_rating" />
                     </div>
                     <strong class="block mt-3" itemprop="name">@{{ review.summary }}</strong>
                     <p class="mt-1 text-sm" itemprop="reviewBody">@{{ review.text }}</p>

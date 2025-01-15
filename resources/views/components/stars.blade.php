@@ -4,12 +4,12 @@
     <div class="relative">
         <div class="flex gap-0.5">
             @for ($star = 0; $star < 5; $star++)
-                <x-heroicon-s-star class="size-5 text-muted/50" />
+                <x-heroicon-s-star class="text-muted/50 size-5" />
             @endfor
         </div>
         <div
-            style="width: {{ (int)$score }}%"
             v-bind:style="{ width: ({{ $score }} || 0) + '%'}"
+            style="width: {{ $score }}%"
             class="absolute inset-0 flex gap-0.5 overflow-hidden"
         >
             @for ($star = 0; $star < 5; $star++)
@@ -17,13 +17,8 @@
             @endfor
         </div>
     </div>
-    @if ($count || $attributes->has('v-bind:count'))
-        <span
-            class="text-sm"
-            @if ($attributes->has('v-bind:count'))
-                v-text="'(' + ({{ $attributes['v-bind:count'] }} || 0) + ')'"
-            @endif
-        >
+    @if ($count)
+        <span class="text-sm" v-text="'(' + ({{ $count }} || 0) + ')'">
             ({{ $count }})
         </span>
     @endif
