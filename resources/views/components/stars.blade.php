@@ -9,7 +9,7 @@
         </div>
         <div
             v-bind:style="{ width: ({{ $score }} || 0) + '%'}"
-            style="width: {{ $score }}%"
+            style="width: {{ (int)$score }}%"
             class="absolute inset-0 flex gap-0.5 overflow-hidden"
         >
             @for ($star = 0; $star < 5; $star++)
@@ -19,7 +19,7 @@
     </div>
     @if ($count)
         <span class="text-sm" v-text="'(' + ({{ $count }} || 0) + ')'">
-            ({{ $count }})
+            ({{ (int)$count }})
         </span>
     @endif
 </div>
