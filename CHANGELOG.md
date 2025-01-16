@@ -1,6 +1,23 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/1.1.0...master)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/3.0.0...master)
+## [3.0.0](https://github.com/rapidez/reviews/releases/tag/3.0.0) - 2025-01-15
+
+### Added
+
+- Added v3 to dependencies (4cffb74, 78dbc62)
+
+### Changed
+
+- Rapidez v3 colors and Blade Components + Dutch translations (#27)
+- Stars refactor (#29)
+
+## [1.2.0](https://github.com/rapidez/reviews/releases/tag/1.2.0) - 2024-07-15
+
+### Added
+
+- Laravel 11 support (#26)
+
 ## [1.1.0](https://github.com/rapidez/reviews/releases/tag/1.1.0) - 2024-03-05
 
 ### Added
