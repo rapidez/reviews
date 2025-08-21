@@ -4,7 +4,9 @@
     <div class="relative">
         <div class="flex gap-0.5">
             @for ($star = 0; $star < 5; $star++)
-                <x-heroicon-s-star class="text-muted/50 size-5" />
+                <div class="flex items-center justify-center bg-emphasis size-5">
+                    <x-rapidez-reviews::star-icon />
+                </div>
             @endfor
         </div>
         <div
@@ -13,7 +15,9 @@
             class="absolute inset-0 flex gap-0.5 overflow-hidden"
         >
             @for ($star = 0; $star < 5; $star++)
-                <x-heroicon-s-star class="size-5 shrink-0 text-yellow-400" />
+                <div class="flex items-center justify-center bg-success size-5 shrink-0">
+                    <x-rapidez-reviews::star-icon />
+                </div>
             @endfor
         </div>
     </div>

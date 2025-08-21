@@ -1,42 +1,72 @@
-@if($reviews_score)
-    <lazy>
-        <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', @compact('sku'))'>
-            <div slot-scope="{ data }" v-if="data?.products?.items[0]?.reviews" class="flex flex-col gap-4">
-                <div class="hidden" itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
-                    <meta itemprop="reviewCount" content="{{ $reviews_count }}" />
-                    <meta itemprop="ratingValue" content="{{ $reviews_score }}" />
-                    <meta itemprop="bestRating" content="100" />
+<div class="flex w-full justify-between gap-x-14 mt-20 max-lg:flex-col">
+    <div class="lg:w-96">
+        <div class="flex flex-col">
+            <div class="flex flex-wrap items-center justify-between">
+                <div class="flex flex-col">
+                    <div class="text-2xl text font-semibold">@lang('Product reviews')</div>
+                    <div class="mt-2.5 flex flex-wrap items-center gap-x-2">
+                        <x-rapidez-reviews::stars :score="$product->reviews_score" open-review-sidebar />
+                        <div class="text-sm text-secondary capitalize font-normal">
+                            @if($product->reviews_count)
+                                {{ $product->reviews_count }} @lang('reviews')
+                            @else
+                                @lang('No reviews yet')
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <div v-for="review in data.products.items[0].reviews.items" class="w-full p-8 border rounded bg-white" itemprop="review" itemtype="https://schema.org/Review" itemscope>
-                    <div class="flex items-center gap-2 text-muted" itemprop="author" itemtype="https://schema.org/Person" itemscope>
-                        <strong itemprop="name">@{{ review.nickname }}</strong>
-                        <span class="text-xs">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
+                <div class="border shadow-sm flex flex-col rounded border bg-white p-4 pb-2.5">
+                    <div class="text font-bold">
+                        <span class="text-secondary text-2xl mr-1.5">{{ number_format($product->reviews_score / 10, 1) }}</span>/ 10
                     </div>
-                    <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
-                        <meta itemprop="ratingValue" v-bind:content="review.average_rating" />
-                        <meta itemprop="bestRating" content="100" />
-                        <x-rapidez-reviews::stars score="review.average_rating" />
-                    </div>
-                    <strong class="block mt-3" itemprop="name">@{{ review.summary }}</strong>
-                    <p class="mt-1 text-sm" itemprop="reviewBody">@{{ review.text }}</p>
+                    <div class="text-sm text mt-1 text-center font-normal">@lang('Rating')</div>
                 </div>
             </div>
-        </graphql>
-    </lazy>
-@else
-    <div class="w-full p-8 mb-4 border rounded bg-white">
-        <div class="flex items-center gap-2 text-muted">
-            <strong itemprop="name">@lang('No reviews found')</strong>
-            <span class="text-xs">
-                @{{ new Date(Date.now()).toLocaleDateString() }}
-            </span>
+            <div class="min-h-[164px]">
+                <lazy>
+                    <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $product->sku])' :variables="{pageSize: 9999, page: 1}">
+                        <div
+                            v-if="data"
+                            :set="ratings = data?.products?.items[0]?.reviews?.items ?? []"
+                            slot-scope="{ data, ratings, c_ratings }"
+                            class="mt-6 flex flex-col-reverse gap-y-2.5 capitalize"
+                        >
+                            @for ($i = 1; $i <= 5; $i++)
+                                <div class="flex flex-wrap items-center justify-between" :set="c_ratings = ratings?.filter(e => e.average_rating == {{ $i * 20 }})">
+                                    <div class="text-sm text flex items-center gap-x-2.5 font-medium">
+                                        <div class="w-2">{{ $i }}</div>
+                                        <div class="flex items-center justify-center relative size-[18px] shrink-0 rounded" :class="c_ratings?.length ? 'bg-success' : 'bg-emphasis'">
+                                            <x-rapidez-reviews::star-icon />
+                                        </div>
+                                    </div>
+                                    <x-rapidez-reviews::bar class="mx-4 flex-1" dynamic score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
+                                    <div class="text-sm text-neutral text-left font-normal min-w-20">
+                                        @{{ c_ratings.length }}
+                                        <template v-if="c_ratings.length == 1">@lang('Review')</template>
+                                        <template v-else>@lang('Reviews')</template>
+                                    </div>
+                                </div>
+                            @endfor
+                        </div>
+                    </graphql>
+                </lazy>
+            </div>
+            <div class="mt-8 flex flex-col gap-y-1.5">
+                <div class="text-lg text font-semibold">@lang('Share your experience')</div>
+                <div class="text font-normal">
+                    @lang('Are you familiar with this article? Share your experience with others and let us know what you think!')
+                </div>
+            </div>
+            <x-rapidez::button.secondary for="review-form" class="mt-4 w-full">
+                @lang('Write a review')
+            </x-rapidez::button.secondary>
+            <x-rapidez::slideover id="review-form" position="right">
+                <x-slot:title class="mx-0">@lang('Write review')</x-slot:title>
+                @include('rapidez-reviews::form', ['sku' => $product->sku])
+            </x-rapidez::slideover>
         </div>
-        <x-rapidez-reviews::stars />
-        <strong class="block mt-3">
-            @lang('Be the first to write a review')
-        </strong>
-        <p class="mt-1 text-sm">
-            {{ $product->name }}
-        </p>
     </div>
-@endif
+    <div class="w-full flex-1">
+        @include('rapidez-reviews::components.reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviews_count, 'reviews_score' => $product->reviews_score])
+    </div>
+</div>
