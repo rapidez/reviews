@@ -61,7 +61,7 @@
                 @lang('Write a review')
             </x-rapidez::button.secondary>
             <x-rapidez::slideover id="review-form" position="right">
-                <x-slot:title class="mx-0">@lang('Write review')</x-slot:title>
+                <x-slot:title class="mx-0">@lang('Write a review')</x-slot:title>
                 @include('rapidez-reviews::form', ['sku' => $product->sku])
             </x-rapidez::slideover>
         </div>
