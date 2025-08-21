@@ -6,9 +6,9 @@
                     <div class="text-2xl text font-semibold">@lang('Product reviews')</div>
                     <div class="mt-2.5 flex flex-wrap items-center gap-x-2">
                         <x-rapidez-reviews::stars :score="$product->reviews_score" open-review-sidebar />
-                        <div class="text-sm text-secondary capitalize font-normal">
+                        <div class="text-sm text-secondary font-normal">
                             @if($product->reviews_count)
-                                {{ $product->reviews_count }} @lang('reviews')
+                                {{ $product->reviews_count }} @lang('Reviews')
                             @else
                                 @lang('No reviews yet')
                             @endif
@@ -29,7 +29,7 @@
                             v-if="data"
                             :set="ratings = data?.products?.items[0]?.reviews?.items ?? []"
                             slot-scope="{ data, ratings, c_ratings }"
-                            class="mt-6 flex flex-col-reverse gap-y-2.5 capitalize"
+                            class="mt-6 flex flex-col-reverse gap-y-2.5"
                         >
                             @for ($i = 1; $i <= 5; $i++)
                                 <div class="flex flex-wrap items-center justify-between" :set="c_ratings = ratings?.filter(e => e.average_rating == {{ $i * 20 }})">
