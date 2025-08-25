@@ -22,8 +22,8 @@
         </div>
     </div>
     @if ($count)
-        <span class="text-sm" v-text="'(' + ({{ $count }} || 0) + ')'">
-            ({{ (int)$count }})
+        <span class="text-sm" v-text="({{ $count }} || 0) + ' ' + ({{ $count }} === 1 ? '@lang('Review')' : '@lang('Reviews')')">
+            {{ $count }} @choice('Review|:count Reviews', $count)
         </span>
     @endif
 </div>
