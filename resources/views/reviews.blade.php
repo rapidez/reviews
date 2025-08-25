@@ -6,7 +6,7 @@
                     <div class="text-2xl text font-semibold">@lang('Product reviews')</div>
                     <div class="mt-2.5 flex flex-wrap items-center gap-x-2">
                         <x-rapidez-reviews::stars :score="$product->reviews_score" open-review-sidebar />
-                        <div class="text-sm text-secondary font-normal">
+                        <div class="text-sm text-muted font-normal">
                             @if($product->reviews_count)
                                 {{ $product->reviews_count }} @lang('Reviews')
                             @else
@@ -35,12 +35,12 @@
                                 <div class="flex flex-wrap items-center justify-between" :set="c_ratings = ratings?.filter(e => e.average_rating == {{ $i * 20 }})">
                                     <div class="text-sm text flex items-center gap-x-2.5 font-medium">
                                         <div class="w-2">{{ $i }}</div>
-                                        <div class="flex items-center justify-center relative size-[18px] shrink-0 rounded" :class="c_ratings?.length ? 'bg-success' : 'bg-emphasis'">
+                                        <div class="flex items-center justify-center relative size-[18px] shrink-0" :class="c_ratings?.length ? 'bg-success' : 'bg-emphasis'">
                                             <x-rapidez-reviews::star-icon />
                                         </div>
                                     </div>
                                     <x-rapidez-reviews::bar class="mx-4 flex-1" dynamic score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
-                                    <div class="text-sm text-neutral text-left font-normal min-w-20">
+                                    <div class="text-sm text-muted text-left font-normal min-w-20">
                                         @{{ c_ratings.length }}
                                         <template v-if="c_ratings.length == 1">@lang('Review')</template>
                                         <template v-else>@lang('Reviews')</template>
