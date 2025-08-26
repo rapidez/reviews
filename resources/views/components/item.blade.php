@@ -26,7 +26,7 @@
         itemscope
     >
         <span itemprop="name">@{{ review.nickname }}</span>
-        <span class="bg mx-2.5 h-1 w-1 rounded-full"></span>
+        <span class="bg-emphasis mx-2.5 h-1 w-1 rounded-full"></span>
         <span>@{{ new Date(review.created_at).toLocaleDateString() }}</span>
     </p>
 </div>

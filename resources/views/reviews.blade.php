@@ -39,7 +39,7 @@
                                             <x-rapidez-reviews::star-icon />
                                         </div>
                                     </div>
-                                    <x-rapidez-reviews::bar class="mx-4 flex-1" dynamic score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
+                                    <x-rapidez-reviews::bar class="mx-4 flex-1" score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
                                     <div class="text-sm text-muted text-left font-normal min-w-20">
                                         @{{ c_ratings.length }}
                                         <template v-if="c_ratings.length == 1">@lang('Review')</template>
