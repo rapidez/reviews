@@ -1,7 +1,8 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
     <div v-if="data" slot-scope="{ data }" class="w-full pt-7 pb-0 mb-5 rounded px-8">
         <graphql-mutation
-            query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }"
+            query="@include('rapidez-reviews::queries.reviewsForm')"
+            {{-- query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }" --}}
             :variables="{ ratings: [], sku: '{{ $sku }}' }"
             :clear="true"
             :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
@@ -18,9 +19,9 @@
                                         <div class="flex items-center gap-0.5">
                                             <label
                                                 v-for="ratingValue in rating.values"
-                                                class="cursor-pointer bg-emphasis hover:text-white hover:bg-success [&:has(~label:hover)]:bg-success [&:has(~label:hover)]:text-white"
+                                                class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
                                                 v-bind:class="{
-                                                    '!text-white !bg-success': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
                                             >
@@ -33,7 +34,7 @@
                                                     required
                                                 />
                                                 <span class="flex items-center justify-center size-5 shrink-0 transition">
-                                                    <x-rapidez-reviews::star-icon />
+                                                    <x-rapidez::reviews-star />
                                                 </span>
                                             </label>
                                         </div>

@@ -18,6 +18,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
+        "blade-ui-kit/blade-icons": "^1.8",
         "rapidez/core": "^3.0|^4.0"
     },
     "autoload": {
@@ -26,7 +27,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {

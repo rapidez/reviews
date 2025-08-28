@@ -35,8 +35,8 @@
                                 <div class="flex flex-wrap items-center justify-between" :set="c_ratings = ratings?.filter(e => e.average_rating == {{ $i * 20 }})">
                                     <div class="text-sm text flex items-center gap-x-2.5 font-medium">
                                         <div class="w-2">{{ $i }}</div>
-                                        <div class="flex items-center justify-center relative size-[18px] shrink-0" :class="c_ratings?.length ? 'bg-success' : 'bg-emphasis'">
-                                            <x-rapidez-reviews::star-icon />
+                                        <div class="flex items-center justify-center relative size-[18px] shrink-0" :class="c_ratings?.length ? 'bg-emerald-600' : 'bg-emphasis'">
+                                            <x-rapidez::reviews-star />
                                         </div>
                                     </div>
                                     <x-rapidez-reviews::bar class="mx-4 flex-1" score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
