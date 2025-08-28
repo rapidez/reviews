@@ -30,7 +30,7 @@ class ReviewsServiceProvider extends ServiceProvider
     {
         $this->callAfterResolving(Factory::class, function (Factory $factory) {
             $factory->add('rapidez::reviews', [
-                'path'   => __DIR__ . '/../resources/svg',
+                'path'   => __DIR__.'/../resources/svg',
                 'prefix' => 'rapidez::reviews',
             ]);
         });
