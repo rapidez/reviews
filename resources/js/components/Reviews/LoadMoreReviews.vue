@@ -16,9 +16,9 @@ export default {
             if (!response?.data?.products?.items.length) {
                 return
             }
-            if (response?.data?.products?.items[0].reviews.items.length > 0) {
+            if (response.data.products.items[0].reviews.items.length > 0) {
                 this.reviews.push(
-                    ...response?.data?.products?.items[0].reviews.items
+                    ...response.data.products.items[0].reviews.items
                 );
             }
 
