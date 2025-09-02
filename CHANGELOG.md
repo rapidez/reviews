@@ -1,6 +1,12 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/4.0.0...4.0.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/4.1.0...4.1.0)
+## [4.1.0](https://github.com/rapidez/reviews/releases/tag/4.1.0) - 2025-09-02
+
+### Added
+
+- New frontend (#31)
+
 ## [4.0.0](https://github.com/rapidez/reviews/releases/tag/4.0.0) - 2025-05-20
 
 ### Added
