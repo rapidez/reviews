@@ -1,4 +1,4 @@
-{
+query reviews($page: Int! = 1 $pageSize: Int! = 3){
   products(
     filter: {
       sku: {
@@ -10,7 +10,7 @@
       sku
       rating_summary
       ... on SimpleProduct {
-        reviews(pageSize: 20 currentPage: 1) {
+        reviews(pageSize: $pageSize currentPage: $page) {
           items {
             average_rating
             created_at
@@ -25,7 +25,7 @@
         }
       }
       ... on ConfigurableProduct {
-        reviews(pageSize: 20 currentPage: 1) {
+        reviews(pageSize: $pageSize currentPage: $page) {
           items {
             average_rating
             created_at

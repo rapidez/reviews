@@ -1,11 +1,21 @@
 {
     "Add Your Review": "Voeg uw review toe",
+    "Are you familiar with this article? Share your experience with others and let us know what you think!": "Bent u bekend met dit artikel? Deel uw ervaring met andere en laat weten wat u er van vindt!",
     "Be the first to write a review": "Schrijf de eerste review",
+    "Load more reviews": "Toon meer reviews",
     "Nickname": "Nickname",
-    "No reviews found": "Geen reviews gevonden",
-    "Rating": "Rating",
+    "No reviews yet": "Nog geen reviews",
+    "Product reviews": "Product reviews",
+    "Rating": "Beoordeling",
     "Review": "Review",
+    "Reviews": "Reviews",
+    "Review|:count Reviews": "Review|:count Reviews",
+    "Share your experience": "Deel uw ervaring",
     "Submit Review": "Review indienen",
     "Summary": "Summary",
-    "You submitted your review for moderation.": "Uw review is in behandeling."
+    "Title of your review": "Titel van uw review",
+    "What do you think of this product?": "Wat vindt u van dit product?",
+    "Write a review": "Schrijf een review",
+    "You submitted your review for moderation.": "Uw review is in behandeling.",
+    "Your name": "Uw naam"
 }

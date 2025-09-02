@@ -1,15 +1,14 @@
-<div class="top-5 self-start w-full rounded bg-white p-4">
-    <x-rapidez::recaptcha location="product_review"/>
-    <graphql-mutation
-        query="mutation review ($sku: String!, $nickname: String!, $summary: String!, $text: String!, $ratings: [ProductReviewRatingInput!]!) { createProductReview ( input: { sku: $sku, nickname: $nickname, summary: $summary, text: $text, ratings: $ratings } ), { review { nickname summary text average_rating ratings_breakdown { name value } } } }"
-        :variables="{ ratings: [], sku: '{{ $sku }}' }"
-        :clear="true"
-        :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
-    >
-        <div slot-scope="{ variables, mutate, mutated }">
-            <form @submit="mutate">
-                <div class="w-full bg-white rounded-lg pt-2">
-                    <strong class="text-1xl">@lang('Add Your Review')</strong>
+<graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
+    <div v-if="data" slot-scope="{ data }" class="w-full pt-7 pb-0 mb-5 rounded px-8">
+        <graphql-mutation
+            query="@include('rapidez-reviews::queries.reviewsForm')"
+            :variables="{ ratings: [], sku: '{{ $sku }}' }"
+            :clear="true"
+            :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
+            :notify="{ message: '@lang('You submitted your review for moderation.')' }"
+        >
+            <form slot-scope="{ variables, mutate, mutated }" v-on:submit.prevent="mutate">
+                <div class="w-full pt-2 rounded-lg">
                     <div class="flex flex-wrap w-full">
                         <div class="w-full">
                             <graphql query='@include('rapidez-reviews::queries.ratingsMetadata')'>
@@ -19,9 +18,9 @@
                                         <div class="flex items-center gap-0.5">
                                             <label
                                                 v-for="ratingValue in rating.values"
-                                                class="cursor-pointer text-muted/50 hover:text-yellow-400 [&:has(~label:hover)]:text-yellow-400"
+                                                class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
                                                 v-bind:class="{
-                                                    '!text-yellow-400': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
                                             >
@@ -33,7 +32,9 @@
                                                     v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
                                                     required
                                                 />
-                                                <x-heroicon-s-star class="size-5 shrink-0 transition" />
+                                                <span class="flex items-center justify-center size-5 shrink-0 transition">
+                                                    <x-rapidez::reviews-star />
+                                                </span>
                                             </label>
                                         </div>
                                     </div>
@@ -43,32 +44,49 @@
                                     <x-rapidez-reviews::stars score="0" />
                                 </div>
                             </graphql>
-                            <div class="space-y-2">
+                            <div class="flex flex-col gap-y-3">
                                 <label>
-                                    <x-rapidez::label>@lang('Nickname')</x-rapidez::label>
-                                    <x-rapidez::input v-model="variables.nickname" name="nickname" required/>
+                                    <x-rapidez::label>
+                                        @lang('Your name')
+                                    </x-rapidez::label>
+                                    <x-rapidez::input v-model="variables.nickname" name="nickname" required />
                                 </label>
                                 <label>
-                                    <x-rapidez::label>@lang('Summary')</x-rapidez::label>
-                                    <x-rapidez::input v-model="variables.summary" name="summary" required/>
+                                    <x-rapidez::label>
+                                        @lang('Title of your review')
+                                    </x-rapidez::label>
+                                    <x-rapidez::input v-model="variables.summary" name="summary" required />
                                 </label>
                                 <label>
-                                    <x-rapidez::label>@lang('Review')</x-rapidez::label>
-                                    <x-rapidez::input.textarea v-model="variables.text" name="review" required/>
+                                    <x-rapidez::label>
+                                        @lang('What do you think of this product?')
+                                    </x-rapidez::label>
+                                    <x-rapidez::input.textarea v-model="variables.text" name="review" required />
                                 </label>
                             </div>
                         </div>
-                        <div class="w-full flex items-center mt-2">
-                            <x-rapidez::button.secondary type="submit">
+                        <div class="flex flex-col gap-y-2 w-full mt-2">
+                            <x-rapidez::button.primary
+                                v-bind:disabled="variables.ratings.length == 0"
+                                v-on:click="window.document.getElementById('review-form').checked = false"
+                                class="text-base w-full"
+                                type="submit"
+                            >
                                 @lang('Submit Review')
-                            </x-rapidez::button.secondary>
-                            <span v-if="mutated" class="ml-3 text-green-500" v-cloak>
+                            </x-rapidez::button.primary>
+                            <span v-if="mutated" class="ml-3 text">
                                 @lang('You submitted your review for moderation.')
                             </span>
                         </div>
                     </div>
                 </div>
             </form>
-        </div>
-    </graphql-mutation>
-</div>
+        </graphql-mutation>
+    </div>
+</graphql>
+
+@if(Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' && $key = Rapidez::config('recaptcha_frontend/type_recaptcha_v3/public_key', null, true))
+    @push('head')
+        <script src="https://www.google.com/recaptcha/api.js?render={{ $key }}" async defer></script>
+    @endpush
+@endif
