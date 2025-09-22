@@ -1,5 +1,11 @@
 # Rapidez Reviews
 
+![](images/pdp-review-stars.png)
+![](images/pdp-with-reviews.png)
+![](images/pdp-reviews-form.png)
+![](images/pdp-without-reviews.png)
+![](images/product-tile-reviews.png)
+
 ## Installation
 
 ```bash
@@ -23,8 +29,10 @@ If you'd like to show product reviews on out-of-stock product pages you need to 
 
 Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
 ```blade
-@if($product->reviews_score)
-    <x-rapidez-reviews::stars :score="$product->reviews_score" :count="$product->reviews_count" />
+@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
+    @if ($product->reviews_score)
+        <x-dynamic-component component="rapidez-reviews::stars" :score="$product->reviews_score :count="$product->reviews_count" />
+    @endif
 @endif
 ```
 
@@ -32,18 +40,20 @@ Add the stars where you'd like in `resources/views/vendor/rapidez/product/overvi
 
 The review list can be added with:
 ```blade
-@include('rapidez-reviews::reviews', [
-    'sku' => $product->sku,
-    'reviews_count' => $product->reviews_count,
-    'reviews_score' => $product->reviews_score,
-])
+@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
+    <div class="container my-5">
+        @include('rapidez-reviews::reviews')
+    </div>
+@endif
 ```
 
-#### Review form
+#### Microdata
 
-And the form to add a review:
+This should be included in `resources/views/vendor/rapidez/product/overview.blade.php` inside the: `<div itemtype="https://schema.org/Product" itemscope>`
 ```blade
-@include('rapidez-reviews::form', ['sku' => $product->sku])
+@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
+    @include('rapidez-reviews::components.microdata')
+@endif
 ```
 
 ### Product listing
@@ -52,8 +62,9 @@ And the form to add a review:
 
 Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
 ```blade
-<x-rapidez-reviews::stars v-if="item.reviews_count" count="item.reviews_count" score="item.reviews_score"/>
-
+@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
+    <x-dynamic-component component="rapidez-reviews::stars" v-if="item.reviews_count" count="item.reviews_count" score="item.reviews_score" />
+@endif
 ```
 
 ## Views

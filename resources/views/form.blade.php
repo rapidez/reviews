@@ -23,6 +23,7 @@
                                                     '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
+                                                data-testid="star-rating"
                                             >
                                                 <input
                                                     v-model="variables.ratings[index]"
@@ -71,6 +72,7 @@
                                 v-on:click="window.document.getElementById('review-form').checked = false"
                                 class="text-base w-full"
                                 type="submit"
+                                data-testid="submit-review"
                             >
                                 @lang('Submit Review')
                             </x-rapidez::button.primary>
