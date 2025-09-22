@@ -21,6 +21,14 @@ export class ProductPage {
         return reviewItems > 0
     }
 
+    async hasLoadMoreReviews() {
+        await expect(this.page.getByTestId('reviews')).toBeVisible()
+        await this.page.getByTestId('load-more-reviews').click()
+        await this.page.waitForTimeout(200)
+        const reviewItems = await this.page.getByTestId('review-item').count()
+        return reviewItems >= 4
+    }
+
     async writeReview() {
         await expect(this.page.getByTestId('reviews')).toBeVisible()
         await this.page.getByTestId('write-review-button').click()

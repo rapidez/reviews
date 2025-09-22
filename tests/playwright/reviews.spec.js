@@ -21,7 +21,19 @@ test('product without reviews', async ({ page }) => {
 
     const hasReviews = await productPage.hasReviews()
     expect(hasReviews).toBe(false)
+
     await new BasePage(page).screenshot('fullpage-footer')
+})
+
+test('load more reviews', async ({ page}) => {
+    const productPage = new ProductPage(page)
+    await productPage.goto(process.env.PRODUCT_URL_LOAD_MORE_REVIEWS)
+
+    const hasLoadMoreReviews = await productPage.hasLoadMoreReviews()
+    expect(hasLoadMoreReviews).toBe(true)
+
+    await new BasePage(page).screenshot('fullpage-footer')
+
 })
 
 test('product write a review', async ({ page }) => {
@@ -29,5 +41,6 @@ test('product write a review', async ({ page }) => {
     await productPage.goto(process.env.PRODUCT_URL_WRITE_REVIEW)
 
     await productPage.writeReview()
+
     await new BasePage(page).screenshot('fullpage-footer')
 })
