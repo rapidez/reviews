@@ -30,6 +30,6 @@ export class ProductPage {
         await this.page.fill('[name=review]', 'The Typhon Performance Fleece-lined Jacket delivers unmatched comfort with its ultra-soft microfleece lining and sleek flatlock seams, making it perfect for layering in any situation. A solid 5/5 stars for style, versatility, and all-day warmth.')
         await this.page.getByTestId('submit-review').click()
         await this.page.waitForLoadState('networkidle')
-        await expect(this.page.getByTestId('notification')).toContainText('You submitted your review for moderation.');
+        await expect(this.page.locator('text=You submitted your review for moderation.')).toBeVisible();
     }
 }

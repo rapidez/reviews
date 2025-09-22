@@ -76,9 +76,6 @@
                             >
                                 @lang('Submit Review')
                             </x-rapidez::button.primary>
-                            <span v-if="mutated" class="ml-3 text">
-                                @lang('You submitted your review for moderation.')
-                            </span>
                         </div>
                     </div>
                 </div>
