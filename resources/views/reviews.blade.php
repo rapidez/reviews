@@ -57,7 +57,11 @@
                     @lang('Are you familiar with this article? Share your experience with others and let us know what you think!')
                 </div>
             </div>
-            <x-rapidez::button.secondary for="review-form" class="mt-4 w-full" data-testid="write-review-button">
+            <x-rapidez::button.secondary
+                for="review-form"
+                class="mt-4 w-full"
+                data-testid="write-review-button"
+            >
                 @lang('Write a review')
             </x-rapidez::button.secondary>
             <x-rapidez::slideover id="review-form" position="right">
