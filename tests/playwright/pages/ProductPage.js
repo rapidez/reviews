@@ -24,7 +24,10 @@ export class ProductPage {
     async hasLoadMoreReviews() {
         await expect(this.page.getByTestId('reviews')).toBeVisible()
         await this.page.getByTestId('load-more-reviews').click()
-        await this.page.waitForTimeout(200)
+        await this.page.waitForFunction(() => {
+            const reviewItems = document.querySelectorAll('[data-testid="review-item"]')
+            return reviewItems.length >= 4
+        })
         const reviewItems = await this.page.getByTestId('review-item').count()
         return reviewItems >= 4
     }
