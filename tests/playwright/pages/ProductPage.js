@@ -10,9 +10,8 @@ export class ProductPage {
         return await this.page.evaluate(() => window.config.product)
     }
 
-    async getRatingText() {
-        const ratingElement = await this.page.getByTestId('rating-number')
-        return await ratingElement.textContent()
+    async getRatingText(product) {
+        await expect(this.page.getByTestId('rating-number')).toContainText((product.reviews_score / 10 ).toString())
     }
 
     async hasReviews() {

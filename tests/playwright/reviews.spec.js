@@ -4,12 +4,10 @@ import { ProductPage } from "./pages/ProductPage";
 
 test('product with reviews', async ({ page }) => {
     const productPage = new ProductPage(page)
-    await productPage.goto(process.env.PRODUCT_URL_REVIEWS)
+    const product = await productPage.goto(process.env.PRODUCT_URL_REVIEWS)
 
-    await expect(productPage.hasReviews()).toBe(true)
-
-    const ratingText = await productPage.getRatingText()
-    expect(ratingText).toBe('6.7')
+    expect(await productPage.hasReviews()).toBe(true)
+    expect(await productPage.getRatingText(product))
 
     await new BasePage(page).screenshot('fullpage-footer')
 })
@@ -18,8 +16,7 @@ test('product without reviews', async ({ page }) => {
     const productPage = new ProductPage(page)
     await productPage.goto(process.env.PRODUCT_URL_WITHOUT_REVIEW)
 
-    const hasReviews = await productPage.hasReviews()
-    expect(hasReviews).toBe(false)
+    expect(await productPage.hasReviews()).toBe(false)
 
     await new BasePage(page).screenshot('fullpage-footer')
 })
@@ -28,8 +25,7 @@ test('load more reviews', async ({ page}) => {
     const productPage = new ProductPage(page)
     await productPage.goto(process.env.PRODUCT_URL_LOAD_MORE_REVIEWS)
 
-    const hasLoadMoreReviews = await productPage.hasLoadMoreReviews()
-    expect(hasLoadMoreReviews).toBe(true)
+    expect(await productPage.hasLoadMoreReviews()).toBe(true)
 
     await new BasePage(page).screenshot('fullpage-footer')
 
