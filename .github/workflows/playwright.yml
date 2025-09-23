@@ -110,9 +110,6 @@ jobs:
       - name: Publish Rapidez configs
         run: php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag="config"
 
-      - name: Configure checkout theme steps
-        run: sed -i "s/'login',//g" config/rapidez/frontend.php
-
       - name: Install Rapidez command
         run: php artisan rapidez:install --frontendonly
 
