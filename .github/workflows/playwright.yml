@@ -107,9 +107,6 @@ jobs:
       - name: Composer require the local rapidez package
         run: composer require rapidez/$PACKAGE:"dev-${{ env.PACKAGE_HASH }} as ${{ env.LATEST_TAG }}"
 
-      - name: Overwrite core views
-        run: php artisan vendor:publish --provider="Rapidez\CheckoutTheme\ServiceProvider" --tag=core-overwrites
-
       - name: Publish Rapidez configs
         run: php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag="config"
 
