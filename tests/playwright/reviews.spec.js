@@ -6,8 +6,7 @@ test('product with reviews', async ({ page }) => {
     const productPage = new ProductPage(page)
     await productPage.goto(process.env.PRODUCT_URL_REVIEWS)
 
-    const hasReviews = await productPage.hasReviews()
-    expect(hasReviews).toBe(true)
+    await expect(productPage.hasReviews()).toBe(true)
 
     const ratingText = await productPage.getRatingText()
     expect(ratingText).toBe('6.7')
