@@ -3,6 +3,7 @@
     itemprop="review"
     itemtype="https://schema.org/Review"
     itemscope
+    data-testid="review-item"
 >
     <div>
         <meta itemprop="ratingValue" :content="review.average_rating" />

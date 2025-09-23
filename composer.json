@@ -19,7 +19,7 @@
     "require": {
         "php": "^8.0",
         "blade-ui-kit/blade-icons": "^1.8",
-        "rapidez/core": "^3.0|^4.0"
+        "rapidez/core": "^4.7"
     },
     "autoload": {
         "psr-4": {

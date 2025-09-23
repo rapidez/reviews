@@ -14,6 +14,7 @@ class ReviewsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez-reviews');
 
         Eventy::addFilter('product.scopes', fn ($scopes) => array_merge($scopes ?: [], [WithReviewsScope::class]));
+        Eventy::addFilter('productpage.frontend.attributes', fn ($attributes) => array_merge($attributes ?: [], ['reviews_score']));
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez-reviews'),

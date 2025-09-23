@@ -17,7 +17,7 @@
                 </div>
                 <div class="border shadow-sm flex flex-col rounded border bg-white p-4 pb-2.5">
                     <div class="text font-bold">
-                        <span class="text-secondary text-2xl mr-1.5">{{ number_format($product->reviews_score / 10, 1) }}</span>/ 10
+                        <span class="text-secondary text-2xl mr-1.5" data-testid="rating-number">{{ number_format($product->reviews_score / 10, 1) }}</span>/ 10
                     </div>
                     <div class="text-sm text mt-1 text-center font-normal">@lang('Rating')</div>
                 </div>
@@ -57,7 +57,11 @@
                     @lang('Are you familiar with this article? Share your experience with others and let us know what you think!')
                 </div>
             </div>
-            <x-rapidez::button.secondary for="review-form" class="mt-4 w-full">
+            <x-rapidez::button.secondary
+                for="review-form"
+                class="mt-4 w-full"
+                data-testid="write-review-button"
+            >
                 @lang('Write a review')
             </x-rapidez::button.secondary>
             <x-rapidez::slideover id="review-form" position="right">

@@ -8,6 +8,7 @@
         v-if="reviews.length > 0 && reviews.length < {{ $reviews_count ?? 0 }}"
         v-on:click="nextPage(); mutate()"
         class="self-center"
+        data-testid="load-more-reviews"
     >
         @lang('Load more reviews')
     </x-rapidez::button.outline>
