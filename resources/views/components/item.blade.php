@@ -28,6 +28,6 @@
     >
         <span itemprop="name">@{{ review.nickname }}</span>
         <span class="bg-emphasis mx-2.5 h-1 w-1 rounded-full"></span>
-        <span class="w-24" data-testid="masked">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
+        <span class="flex-1" data-testid="masked">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
     </p>
 </div>
