@@ -9,7 +9,9 @@ test('product with reviews', async ({ page }) => {
     expect(await productPage.hasReviews()).toBe(true)
     expect(await productPage.getRatingText(product))
 
-    await new BasePage(page).screenshot('fullpage-footer')
+    await new BasePage(page).screenshot('fullpage-footer', {
+        mask: [await page.getByTestId('masked')]
+    })
 })
 
 test('product without reviews', async ({ page }) => {
@@ -27,8 +29,9 @@ test('load more reviews', async ({ page}) => {
 
     expect(await productPage.hasLoadMoreReviews()).toBe(true)
 
-    await new BasePage(page).screenshot('fullpage-footer')
-
+    await new BasePage(page).screenshot('fullpage-footer', {
+        mask: [await page.getByTestId('masked')]
+    })
 })
 
 test('product write a review', async ({ page }) => {
