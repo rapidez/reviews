@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/4.1.0...4.1.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/4.2.0...4.2.0)
+## [4.2.0](https://github.com/rapidez/reviews/releases/tag/4.2.0) - 2025-10-03
+
+### Added
+
+- Playwright tests + readme update (#32, #33, #35)
+
+### Fixed
+
+- Removed duplicated GraphQL query (#34)
+
 ## [4.1.0](https://github.com/rapidez/reviews/releases/tag/4.1.0) - 2025-09-02
 
 ### Added
