@@ -11,40 +11,32 @@
                 <div class="w-full pt-2 rounded-lg">
                     <div class="flex flex-wrap w-full">
                         <div class="w-full">
-                            <graphql query='@include('rapidez-reviews::queries.ratingsMetadata')'>
-                                <div v-if="data" v-cloak slot-scope="{ data }">
-                                    <div v-for="(rating, index) in data.productReviewRatingsMetadata.items" class="mb-2">
-                                        <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
-                                        <div class="flex items-center gap-0.5">
-                                            <label
-                                                v-for="ratingValue in rating.values"
-                                                class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
-                                                v-bind:class="{
-                                                    '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
-                                                }"
-                                                v-bind:title="ratingValue.label"
-                                                data-testid="star-rating"
-                                            >
-                                                <input
-                                                    v-model="variables.ratings[index]"
-                                                    type="radio"
-                                                    class="sr-only"
-                                                    v-bind:name="'rating-' + rating.id"
-                                                    v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
-                                                    required
-                                                />
-                                                <span class="flex items-center justify-center size-5 shrink-0 transition">
-                                                    <x-rapidez::reviews-star />
-                                                </span>
-                                            </label>
-                                        </div>
-                                    </div>
+                            <div v-for="(rating, index) in data.productReviewRatingsMetadata.items" class="mb-2">
+                                <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
+                                <div class="flex items-center gap-0.5">
+                                    <label
+                                        v-for="ratingValue in rating.values"
+                                        class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
+                                        v-bind:class="{
+                                            '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                        }"
+                                        v-bind:title="ratingValue.label"
+                                        data-testid="star-rating"
+                                    >
+                                        <input
+                                            v-model="variables.ratings[index]"
+                                            type="radio"
+                                            class="sr-only"
+                                            v-bind:name="'rating-' + rating.id"
+                                            v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
+                                            required
+                                        />
+                                        <span class="flex items-center justify-center size-5 shrink-0 transition">
+                                            <x-rapidez::reviews-star />
+                                        </span>
+                                    </label>
                                 </div>
-                                <div v-else class="mb-2">
-                                    <x-rapidez::label>@lang('Rating') *</x-rapidez::label>
-                                    <x-rapidez-reviews::stars score="0" />
-                                </div>
-                            </graphql>
+                            </div>
                             <div class="flex flex-col gap-y-3">
                                 <label>
                                     <x-rapidez::label>
