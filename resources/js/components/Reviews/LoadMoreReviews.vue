@@ -5,7 +5,7 @@ export default {
         reviewPage: 1,
     }),
     render() {
-        return this.$scopedSlots.default(this);
+        return this.$slots && this.$slots.default ? this.$slots.default(this) : null
     },
     methods: {
         addReviews(data, response) {
