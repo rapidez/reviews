@@ -6,9 +6,10 @@
                 :variables="{ page: reviewPage, pageSize: 3 }"
                 :callback="addReviews"
                 v-cloak
+                v-slot="{ data }"
             >
                 @{{ reviews }}
-                <div v-if="reviews !== null" class="mt-5 flex flex-col lg:mt-0" slot-scope="{ data }" data-testid="reviews">
+                <div v-if="reviews !== null" class="mt-5 flex flex-col lg:mt-0" data-testid="reviews">
                     <template v-if="reviews.length">
                         <template v-for="review in reviews">
                             @include('rapidez-reviews::components.item')

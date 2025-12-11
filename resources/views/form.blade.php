@@ -1,40 +1,45 @@
-<graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')'>
-    <div v-if="data" slot-scope="{ data }" class="w-full pt-7 pb-0 mb-5 rounded px-8">
+<graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')' v-slot="{ data }">
+    <div v-if="data" class="w-full pt-7 pb-0 mb-5 rounded px-8">
         <graphql-mutation
             query="@include('rapidez-reviews::queries.reviewsForm')"
             :variables="{ ratings: [], sku: '{{ $sku }}' }"
             :clear="true"
             :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
             :notify="{ message: '@lang('You submitted your review for moderation.')' }"
+            v-slot="{ variables, mutate, mutated }"
         >
-            <form slot-scope="{ variables, mutate, mutated }" v-on:submit.prevent="mutate">
+            <form v-on:submit.prevent="mutate">
                 <div class="w-full pt-2 rounded-lg">
                     <div class="flex flex-wrap w-full">
                         <div class="w-full">
-                            <div v-for="(rating, index) in data.productReviewRatingsMetadata.items" class="mb-2">
-                                <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
-                                <div class="flex items-center gap-0.5">
-                                    <label
-                                        v-for="ratingValue in rating.values"
-                                        class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
-                                        v-bind:class="{
-                                            '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
-                                        }"
-                                        v-bind:title="ratingValue.label"
-                                        data-testid="star-rating"
-                                    >
-                                        <input
-                                            v-model="variables.ratings[index]"
-                                            type="radio"
-                                            class="sr-only"
-                                            v-bind:name="'rating-' + rating.id"
-                                            v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
-                                            required
-                                        />
-                                        <span class="flex items-center justify-center size-5 shrink-0 transition">
-                                            <x-rapidez::reviews-star />
-                                        </span>
-                                    </label>
+                            <graphql query='@include('rapidez-reviews::queries.ratingsMetadata')' v-slot="{ data }">
+                                <div v-if="data" v-cloak>
+                                    <div v-for="(rating, index) in data.productReviewRatingsMetadata.items" class="mb-2">
+                                        <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
+                                        <div class="flex items-center gap-0.5">
+                                            <label
+                                                v-for="ratingValue in rating.values"
+                                                class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
+                                                v-bind:class="{
+                                                    '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                }"
+                                                v-bind:title="ratingValue.label"
+                                                data-testid="star-rating"
+                                            >
+                                                <input
+                                                    v-model="variables.ratings[index]"
+                                                    type="radio"
+                                                    class="sr-only"
+                                                    v-bind:name="'rating-' + rating.id"
+                                                    v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
+                                                    required
+                                                />
+                                                <span class="flex items-center justify-center size-5 shrink-0 transition">
+                                                    <x-rapidez::reviews-star />
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex flex-col gap-y-3">

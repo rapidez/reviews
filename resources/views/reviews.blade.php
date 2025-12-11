@@ -24,11 +24,10 @@
             </div>
             <div class="min-h-[164px]">
                 <lazy>
-                    <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $product->sku])' :variables="{pageSize: 9999, page: 1}">
+                    <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $product->sku])' :variables="{pageSize: 9999, page: 1}" v-slot="{ data, ratings, c_ratings }">
                         <div
                             v-if="data"
                             :set="ratings = data?.products?.items[0]?.reviews?.items ?? []"
-                            slot-scope="{ data, ratings, c_ratings }"
                             class="mt-6 flex flex-col-reverse gap-y-2.5"
                         >
                             @for ($i = 1; $i <= 5; $i++)
