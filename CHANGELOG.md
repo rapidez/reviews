@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/4.2.0...4.2.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/5.0.0...5.0.0)
+## [5.0.0](https://github.com/rapidez/reviews/releases/tag/5.0.0) - 2025-12-11
+
+### Added
+
+- Rapidez v5 support (#37)
+
+### Fixed
+
+- Fix future Playwright tests (#38)
+
 ## [4.2.0](https://github.com/rapidez/reviews/releases/tag/4.2.0) - 2025-10-03
 
 ### Added
