@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </graphql>
                             <div class="flex flex-col gap-y-3">
                                 <label>
                                     <x-rapidez::label>

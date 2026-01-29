@@ -12,60 +12,23 @@
 composer require rapidez/reviews
 ```
 
-If you haven't published the Rapidez views yet, publish them with:
+And run the Rapidez indexer:
+
+```bash
+php artisan rapidez:index
+```
+
+After that the reviews will show up automatically as it's added within the Rapidez core. If you'd like to change that you can publish the Rapidez Core views with:
 ```bash
 php artisan vendor:publish --provider="Rapidez\Core\RapidezServiceProvider" --tag=views
 ```
 
-### Configuration
+## Configuration
 
 If you'd like to show product reviews on out-of-stock product pages you need to enable this setting in Magento:
 
 > Stores > Settings > Configuration > Catalog > Inventory > Stock Options > Display Out of Stock Products
 
-### Product page
-
-#### Review stars
-
-Add the stars where you'd like in `resources/views/vendor/rapidez/product/overview.blade.php`:
-```blade
-@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
-    @if ($product->reviews_score)
-        <x-dynamic-component component="rapidez-reviews::stars" :score="$product->reviews_score :count="$product->reviews_count" />
-    @endif
-@endif
-```
-
-#### Review list
-
-The review list can be added with:
-```blade
-@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
-    <div class="container my-5">
-        @include('rapidez-reviews::reviews')
-    </div>
-@endif
-```
-
-#### Microdata
-
-This should be included in `resources/views/vendor/rapidez/product/overview.blade.php` inside the: `<div itemtype="https://schema.org/Product" itemscope>`
-```blade
-@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
-    @include('rapidez-reviews::components.microdata')
-@endif
-```
-
-### Product listing
-
-#### Review stars
-
-Add somewhere in `resources/views/category/partials/listing/item.blade.php`:
-```blade
-@if (App::providerIsLoaded('Rapidez\Reviews\ReviewsServiceProvider'))
-    <x-dynamic-component component="rapidez-reviews::stars" v-if="item.reviews_count" count="item.reviews_count" score="item.reviews_score" />
-@endif
-```
 
 ## Views
 
