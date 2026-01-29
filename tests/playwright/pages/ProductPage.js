@@ -11,7 +11,7 @@ export class ProductPage {
     }
 
     async getRatingText(product) {
-        await expect(this.page.getByTestId('rating-number')).toContainText((product.reviews_score / 10 ).toString())
+        await expect(this.page.getByTestId('rating-number')).toContainText((product.review_summary.rating_summary / 10 ).toString())
     }
 
     async hasReviews() {

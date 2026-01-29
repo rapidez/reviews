@@ -5,9 +5,9 @@
                 <div class="flex flex-col">
                     <div class="text-2xl text font-semibold">@lang('Product reviews')</div>
                     <div class="mt-2.5 flex flex-wrap items-center gap-x-2">
-                        <x-rapidez-reviews::stars :score="$product->reviewSummary->rating_summary" open-review-sidebar />
+                        <x-rapidez-reviews::stars :score="$product->reviewSummary?->rating_summary" open-review-sidebar />
                         <div class="text-sm text-muted font-normal">
-                            @if($product->reviewSummary->reviews_count)
+                            @if($product->reviewSummary?->reviews_count)
                                 {{ $product->reviewSummary->reviews_count }} @lang('Reviews')
                             @else
                                 @lang('No reviews yet')
@@ -17,7 +17,7 @@
                 </div>
                 <div class="border shadow-sm flex flex-col rounded border bg-white p-4 pb-2.5">
                     <div class="text font-bold">
-                        <span class="text-secondary text-2xl mr-1.5" data-testid="rating-number">{{ number_format($product->reviewSummary->rating_summary / 10, 1) }}</span>/ 10
+                        <span class="text-secondary text-2xl mr-1.5" data-testid="rating-number">{{ number_format($product->reviewSummary?->rating_summary / 10, 1) }}</span>/ 10
                     </div>
                     <div class="text-sm text mt-1 text-center font-normal">@lang('Rating')</div>
                 </div>
@@ -70,6 +70,6 @@
         </div>
     </div>
     <div class="w-full flex-1">
-        @include('rapidez-reviews::components.reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviewSummary->reviews_count, 'reviews_score' => $product->reviewSummary->rating_summary])
+        @include('rapidez-reviews::components.reviews', ['sku' => $product->sku, 'reviews_count' => $product->reviewSummary?->reviews_count, 'reviews_score' => $product->reviewSummary?->rating_summary])
     </div>
 </div>
