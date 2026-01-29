@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/5.0.0...5.0.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/5.0.1...5.0.1)
+## [5.0.1](https://github.com/rapidez/reviews/releases/tag/5.0.1) - 2026-01-29
+
+### Fixed
+
+- Run Playwright tests at 01:00 (a26f561)
+- Playwright reports in Cloudflare R2 (#40)
+- Rapidez v5 + Playwright fixes (#42)
+- Remove dump (#43)
+- Rapidez v5 + Playwright fixes 2 (#44)
+
 ## [5.0.0](https://github.com/rapidez/reviews/releases/tag/5.0.0) - 2025-12-11
 
 ### Added
