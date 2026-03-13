@@ -21,7 +21,8 @@
                                                 v-for="ratingValue in rating.values"
                                                 class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
                                                 v-bind:class="{
-                                                    'text-white! bg-emerald-600!': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    'text-white!': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    'bg-emerald-600!': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
                                                 data-testid="star-rating"
