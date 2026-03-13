@@ -1,4 +1,4 @@
-<div class="w-full py-7 lg:px-7 lg:mb-5 lg:border rounded">
+<div class="w-full py-7 lg:px-7 lg:mb-5 lg:border rounded-sm">
     <div>
         <div class="md:flex md:items-center">
             <span class="inline-block align-text-bottom">

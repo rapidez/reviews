@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border shadow-sm flex flex-col rounded border bg-white p-4 pb-2.5">
+                <div class="border shadow-xs flex flex-col rounded-sm border bg-white p-4 pb-2.5">
                     <div class="text font-bold">
                         <span class="text-secondary text-2xl mr-1.5" data-testid="rating-number">{{ number_format($product->reviewSummary?->rating_summary / 10, 1) }}</span>/ 10
                     </div>

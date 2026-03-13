@@ -1,5 +1,5 @@
 <graphql v-cloak query='@include('rapidez-reviews::queries.ratingsMetadata')' v-slot="{ data }">
-    <div v-if="data" class="w-full pt-7 pb-0 mb-5 rounded px-8">
+    <div v-if="data" class="w-full pt-7 pb-0 mb-5 rounded-sm px-8">
         <graphql-mutation
             query="@include('rapidez-reviews::queries.reviewsForm')"
             :variables="{ ratings: [], sku: '{{ $sku }}' }"
@@ -21,7 +21,7 @@
                                                 v-for="ratingValue in rating.values"
                                                 class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
                                                 v-bind:class="{
-                                                    '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                                    'text-white! bg-emerald-600!': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
                                                 }"
                                                 v-bind:title="ratingValue.label"
                                                 data-testid="star-rating"
