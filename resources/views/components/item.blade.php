@@ -1,5 +1,5 @@
 <div
-    class="w-full py-7 lg:px-8 lg:mb-5 border-t first:border-0 rounded lg:first:border lg:border"
+    class="w-full py-7 lg:px-8 lg:mb-5 border-t first:border-0 rounded-sm lg:first:border lg:border"
     itemprop="review"
     itemtype="https://schema.org/Review"
     itemscope
