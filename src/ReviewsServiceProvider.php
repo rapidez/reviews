@@ -9,7 +9,6 @@ use Illuminate\Support\ServiceProvider;
 use Rapidez\Core\Models\Product;
 use Rapidez\Reviews\Models\RatingOptionVote;
 use Rapidez\Reviews\Models\Review;
-use Rapidez\Reviews\Models\Scopes\WithReviewsScope;
 use TorMorten\Eventy\Facades\Eventy;
 
 class ReviewsServiceProvider extends ServiceProvider
@@ -30,8 +29,8 @@ class ReviewsServiceProvider extends ServiceProvider
 
         config('rapidez.models.product')::macro('reviewCountPerPercent', function () {
             return Cache::store('array')->rememberForever('reviewsGroupedByAveragePercent:'.$this->getKey(), function () {
-                $review = new Review;
-                $ratingOptionVote = new RatingOptionVote;
+                $review = new Review();
+                $ratingOptionVote = new RatingOptionVote();
 
                 $reviewAverages = $review
                     ->newQuery()
