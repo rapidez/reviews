@@ -5,7 +5,6 @@ namespace Rapidez\Reviews\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Rapidez\Core\Models\Model;
-use Rapidez\Reviews\Models\RatingOptionVote;
 
 class Review extends Model
 {
@@ -30,6 +29,6 @@ class Review extends Model
 
     public function averagePercent(): Attribute
     {
-        return Attribute::get(fn() => $this->loadMissing('ratingOptionVotes')->ratingOptionVotes->avg('percent'));
+        return Attribute::get(fn () => $this->loadMissing('ratingOptionVotes')->ratingOptionVotes->avg('percent'));
     }
 }

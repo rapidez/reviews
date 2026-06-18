@@ -31,8 +31,8 @@ class ReviewsServiceProvider extends ServiceProvider
 
         config('rapidez.models.product')::macro('reviewCountPerPercent', function () {
             return Cache::store('array')->rememberForever('reviewsGroupedByAveragePercent:'.$this->getKey(), function () {
-                $review = new Review;
-                $ratingOptionVote = new RatingOptionVote;
+                $review = new Review();
+                $ratingOptionVote = new RatingOptionVote();
 
                 $reviewAverages = $review
                     ->newQuery()
