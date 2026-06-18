@@ -10,6 +10,7 @@ class WithReviewsScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
+        $builder->with('reviews.ratingOptionVotes');
         $builder
             ->selectRaw('ANY_VALUE(review_entity_summary.rating_summary) AS reviews_score')
             ->selectRaw('ANY_VALUE(review_entity_summary.reviews_count) AS reviews_count')
