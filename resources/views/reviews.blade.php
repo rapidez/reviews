@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="mt-6 flex flex-col gap-y-2.5">
-                @foreach($product->reviewCountPerStar()->reverse() as $star => $reviewsCount)
+                @foreach($product->reviewCountPerBucket()->reverse() as $star => $reviewsCount)
                     <div class="flex flex-wrap items-center justify-between">
                         <div class="text-sm text flex items-center gap-x-2.5 font-medium">
                             <div class="w-2">{{ $star }}</div>

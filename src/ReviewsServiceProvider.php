@@ -54,20 +54,20 @@ class ReviewsServiceProvider extends ServiceProvider
             });
         });
 
-        config('rapidez.models.product')::macro('reviewCountPerStar', function (int $stars = 5) {
+        config('rapidez.models.product')::macro('reviewCountPerBucket', function (int $buckets = 5) {
             $reviewsGroupedByAveragePercent = $this->reviewCountPerPercent();
 
-            $reviewsCountPerStar = [];
-            for ($i = 1; $i <= $stars; $i++) {
-                $reviewsCountPerStar[$i] = 0;
+            $reviewsCountPerBucket = [];
+            for ($i = 1; $i <= $buckets; $i++) {
+                $reviewsCountPerBucket[$i] = 0;
                 foreach ($reviewsGroupedByAveragePercent as $averagePercent => $reviewsCount) {
-                    if (ceil($averagePercent / (100 / $stars)) == $i) {
-                        $reviewsCountPerStar[$i] += $reviewsCount;
+                    if (ceil($averagePercent / (100 / $buckets)) == $i) {
+                        $reviewsCountPerBucket[$i] += $reviewsCount;
                     }
                 }
             }
 
-            return collect($reviewsCountPerStar);
+            return collect($reviewsCountPerBucket);
         });
     }
 
