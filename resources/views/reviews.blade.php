@@ -22,33 +22,25 @@
                     <div class="text-sm text mt-1 text-center font-normal">@lang('Rating')</div>
                 </div>
             </div>
-            <div class="min-h-[164px]">
-                <lazy>
-                    <graphql v-cloak query='@include('rapidez-reviews::queries.reviews', ['sku' => $product->sku])' :variables="{pageSize: 9999, page: 1}" v-slot="{ data, ratings, c_ratings }">
-                        <div
-                            v-if="data"
-                            :set="ratings = data?.products?.items[0]?.reviews?.items ?? []"
-                            class="mt-6 flex flex-col-reverse gap-y-2.5"
-                        >
-                            @for ($i = 1; $i <= 5; $i++)
-                                <div class="flex flex-wrap items-center justify-between" :set="c_ratings = ratings?.filter(e => e.average_rating == {{ $i * 20 }})">
-                                    <div class="text-sm text flex items-center gap-x-2.5 font-medium">
-                                        <div class="w-2">{{ $i }}</div>
-                                        <div class="flex items-center justify-center relative size-[18px] shrink-0" :class="c_ratings?.length ? 'bg-emerald-600' : 'bg-emphasis'">
-                                            <x-rapidez::reviews-star />
-                                        </div>
-                                    </div>
-                                    <x-rapidez-reviews::bar class="mx-4 flex-1" score="c_ratings.length / (ratings.length == 0 ? 1 : ratings.length) * 100" />
-                                    <div class="text-sm text-muted text-left font-normal min-w-20">
-                                        @{{ c_ratings.length }}
-                                        <template v-if="c_ratings.length == 1">@lang('Review')</template>
-                                        <template v-else>@lang('Reviews')</template>
-                                    </div>
-                                </div>
-                            @endfor
+            <div class="mt-6 flex flex-col gap-y-2.5">
+                @foreach($product->reviewCountPerBucket()->reverse() as $star => $reviewsCount)
+                    <div class="flex flex-wrap items-center justify-between">
+                        <div class="text-sm text flex items-center gap-x-2.5 font-medium">
+                            <div class="w-2">{{ $star }}</div>
+                            <div @class([
+                                "flex items-center justify-center relative size-[18px] shrink-0",
+                                "bg-emerald-600" => $reviewsCount,
+                                "bg-emphasis" => !$reviewsCount,
+                                ])>
+                                <x-rapidez::reviews-star />
+                            </div>
                         </div>
-                    </graphql>
-                </lazy>
+                        <x-rapidez-reviews::bar class="mx-4 flex-1" :score="$reviewsCount / ($product->reviews_count == 0 ? 1 : $product->reviews_count) * 100" />
+                        <div class="text-sm text-muted text-left font-normal min-w-20">
+                            @choice(':count Review|:count Reviews', $reviewsCount)
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <div class="mt-8 flex flex-col gap-y-1.5">
                 <div class="text-lg text font-semibold">@lang('Share your experience')</div>
