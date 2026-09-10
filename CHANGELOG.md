@@ -1,6 +1,13 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/4.2.1...4.2.1)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/...4.3.0)
+## [4.3.0](https://github.com/rapidez/reviews/releases/tag/4.3.0) - 2026-09-10
+
+### Changed
+
+- Get reviews aggregations via php (#50)
+
+
 ## [4.2.1](https://github.com/rapidez/reviews/releases/tag/4.2.1) - 2025-12-11
 
 ### Fixed
