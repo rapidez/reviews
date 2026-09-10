@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/5.1.0...5.1.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/5.2.0...5.2.0)
+## [5.2.0](https://github.com/rapidez/reviews/releases/tag/5.2.0) - 2026-09-10
+
+### Changed
+
+- Get reviews aggregations via php (#51)
+
+
+
 ## [5.1.0](https://github.com/rapidez/reviews/releases/tag/5.1.0) - 2026-03-24
 
 ### Changed
