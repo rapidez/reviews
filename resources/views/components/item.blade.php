@@ -5,6 +5,10 @@
     itemscope
     data-testid="review-item"
 >
+    <div itemprop="itemReviewed" itemtype="https://schema.org/Product" itemscope>
+        <meta itemprop="name" content="{{ $product->name }}" />
+        <meta itemprop="url" content="{{ url($product->url) }}" />
+    </div>
     <div>
         <meta itemprop="ratingValue" :content="review.average_rating" />
         <meta itemprop="bestRating" content="100" />

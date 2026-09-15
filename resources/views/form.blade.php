@@ -12,30 +12,35 @@
                     <div class="flex flex-wrap w-full">
                         <div class="w-full">
                             <div v-for="(rating, index) in data.productReviewRatingsMetadata.items" class="mb-2">
-                                <x-rapidez::label>@{{ rating.name }}</x-rapidez::label>
-                                <div class="flex items-center gap-0.5">
-                                    <label
-                                        v-for="ratingValue in rating.values"
-                                        class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
-                                        v-bind:class="{
-                                            '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
-                                        }"
-                                        v-bind:title="ratingValue.label"
-                                        data-testid="star-rating"
-                                    >
-                                        <input
-                                            v-model="variables.ratings[index]"
-                                            type="radio"
-                                            class="sr-only"
-                                            v-bind:name="'rating-' + rating.id"
-                                            v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
-                                            required
-                                        />
-                                        <span class="flex items-center justify-center size-5 shrink-0 transition">
-                                            <x-rapidez::reviews-star />
-                                        </span>
-                                    </label>
-                                </div>
+                                <fieldset class="contents">
+                                    <legend class="contents">
+                                        <x-rapidez::label v-bind:id="'rating-label-' + rating.id">@{{ rating.name }}</x-rapidez::label>
+                                    </legend>
+                                    <div class="flex items-center gap-0.5">
+                                        <label
+                                            v-for="ratingValue in rating.values"
+                                            class="cursor-pointer bg-emphasis hover:text-white hover:bg-emerald-600 [&:has(~label:hover)]:bg-emerald-600 [&:has(~label:hover)]:text-white"
+                                            v-bind:class="{
+                                                '!text-white !bg-emerald-600': ratingValue.value <= rating.values.find((ratingValue) => ratingValue.value_id == variables.ratings[index]?.value_id)?.value,
+                                            }"
+                                            data-testid="star-rating"
+                                        >
+                                            <input
+                                                v-model="variables.ratings[index]"
+                                                type="radio"
+                                                class="sr-only"
+                                                v-bind:name="'rating-' + rating.id"
+                                                v-bind:value="{ id: rating.id, value_id: ratingValue.value_id }"
+                                                v-bind:aria-labelledby="'rating-label-' + rating.id + ' rating-value-' + rating.id + '-' + ratingValue.value_id"
+                                                required
+                                            />
+                                            <span v-bind:id="'rating-value-' + rating.id + '-' + ratingValue.value_id" class="sr-only">@{{ ratingValue.label }}</span>
+                                            <span class="flex items-center justify-center size-5 shrink-0 transition">
+                                                <x-rapidez::reviews-star />
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
                             </div>
                             <div class="flex flex-col gap-y-3">
                                 <label>
