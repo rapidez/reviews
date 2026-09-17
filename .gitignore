@@ -1,6 +1,7 @@
 composer.lock
 vendor
 yarn.lock
+pnpm-lock.yaml
 
 # Playwright
 node_modules/
