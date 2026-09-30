@@ -35,7 +35,7 @@
                                 <x-rapidez::reviews-star />
                             </div>
                         </div>
-                        <x-rapidez-reviews::bar class="mx-4 flex-1" :score="$reviewsCount / ($product->reviews_count == 0 ? 1 : $product->reviews_count) * 100" />
+                        <x-rapidez-reviews::bar class="mx-4 flex-1" :score="$reviewsCount / ($product->reviewSummary?->reviews_count ?: 1) * 100" />
                         <div class="text-sm text-muted text-left font-normal min-w-20">
                             @choice(':count Review|:count Reviews', $reviewsCount)
                         </div>
