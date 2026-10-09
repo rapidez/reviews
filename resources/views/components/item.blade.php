@@ -5,9 +5,16 @@
     itemscope
     data-testid="review-item"
 >
-    <div>
+    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Product" class="hidden">
+        <meta itemprop="name" content="{{ $product->name }}" />
+        <meta itemprop="sku" content="{{ $product->sku }}" />
+        <meta itemprop="url" content="{{ url($product->url) }}" />
+    </div>
+    <meta itemprop="datePublished" :content="review.created_at?.substring(0, 10)" />
+    <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
         <meta itemprop="ratingValue" :content="review.average_rating" />
         <meta itemprop="bestRating" content="100" />
+        <meta itemprop="worstRating" content="0" />
         <div class="lg:flex lg:items-center">
             <span class="inline-block align-text-bottom">
                 <x-rapidez-reviews::stars score="review.average_rating" />
@@ -28,6 +35,6 @@
     >
         <span itemprop="name">@{{ review.nickname }}</span>
         <span class="bg-emphasis mx-2.5 h-1 w-1 rounded-full"></span>
-        <span class="flex-1" data-testid="masked">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
+        <span class="w-25" data-testid="masked">@{{ new Date(review.created_at).toLocaleDateString() }}</span>
     </p>
 </div>
