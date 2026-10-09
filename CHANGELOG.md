@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/5.2.0...5.2.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/5.3.0...5.3.0)
+## [5.3.0](https://github.com/rapidez/reviews/releases/tag/5.3.0) - 2026-10-09
+
+### Changed
+
+- Use pnpm as package manager (#56)
+
+### Fixed
+
+- Rich snippet, WCAG and progress bar fixes (#54)
+
 ## [5.2.0](https://github.com/rapidez/reviews/releases/tag/5.2.0) - 2026-09-10
 
 ### Changed
