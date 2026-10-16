@@ -154,6 +154,9 @@ jobs:
       - name: Wait for index to finish
         run: for i in {1..60}; do [[ $(mysql -h 127.0.0.1 -P 3307 -u magento -ppassword -ss -r -e "CALL sys.table_exists('magento', 'catalog_product_flat_1', @exists); SELECT @exists;") == *"BASE TABLE"* ]] && break || sleep 5; done
 
+      - name: Give the sample reviews a unique date, the order is undefined otherwise
+        run: mysql -h 127.0.0.1 -P 3307 -u magento -ppassword magento -e "UPDATE review SET created_at = created_at - INTERVAL review_id SECOND"
+
       - name: Rapidez index
         run: php artisan rapidez:index
 
