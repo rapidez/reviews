@@ -49,15 +49,21 @@
                 </div>
             </div>
             <x-rapidez::button.secondary
-                for="review-form"
+                commandfor="review-form"
+                command="show-modal"
                 class="mt-4 w-full"
                 data-testid="write-review-button"
             >
                 @lang('Write a review')
             </x-rapidez::button.secondary>
-            <x-rapidez::slideover id="review-form" position="right">
-                <x-slot:title class="mx-0">@lang('Write a review')</x-slot:title>
-                @include('rapidez-reviews::form', ['sku' => $product->sku])
+            <x-rapidez::slideover id="review-form" position="right" closedby="any">
+                <x-rapidez::slideover.header>
+                    <div class="max-w-full px-10 truncate font-semibold">@lang('Write a review')</div>
+                    <x-rapidez::slideover.close commandfor="review-form" command="close" :aria-label="__('Close')" />
+                </x-rapidez::slideover.header>
+                <x-rapidez::slideover.content class="max-h-none p-0">
+                    @include('rapidez-reviews::form', ['sku' => $product->sku])
+                </x-rapidez::slideover.content>
             </x-rapidez::slideover>
         </div>
     </div>

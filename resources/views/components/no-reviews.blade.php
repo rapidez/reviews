@@ -12,7 +12,7 @@
     <p class="flex items-center mt-5 text-sm text">
         {{ $product->name }}
     </p>
-    <x-rapidez::button.outline for="review-form" class="mt-6 justify-self-start">
+    <x-rapidez::button.outline commandfor="review-form" command="show-modal" class="mt-6 justify-self-start">
         @lang('Write a review')
     </x-rapidez::button.outline>
 </div>

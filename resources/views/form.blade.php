@@ -72,7 +72,7 @@
                         <div class="flex flex-col gap-y-2 w-full mt-2">
                             <x-rapidez::button.primary
                                 v-bind:disabled="variables.ratings.length == 0"
-                                v-on:click="window.document.getElementById('review-form').checked = false"
+                                v-on:click="window.document.getElementById('review-form')?.close()"
                                 class="text-base w-full"
                                 type="submit"
                                 data-testid="submit-review"
