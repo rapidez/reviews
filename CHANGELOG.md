@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/rapidez/reviews/compare/5.3.0...5.3.0)
+[Unreleased changes](https://github.com/rapidez/reviews/compare/5.4.0...5.4.0)
+## [5.4.0](https://github.com/rapidez/reviews/releases/tag/5.4.0) - 2026-11-27
+
+### Changed
+
+- Support blade-components 3 slideover (#61)
+
+### Fixed
+
+- Close review form after successful submit (#62)
+
 ## [5.3.0](https://github.com/rapidez/reviews/releases/tag/5.3.0) - 2026-10-09
 
 ### Changed
