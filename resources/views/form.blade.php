@@ -6,6 +6,7 @@
             :clear="true"
             :recaptcha="{{ Rapidez::config('recaptcha_frontend/type_for/product_review') == 'recaptcha_v3' ? 'true' : 'false' }}"
             :notify="{ message: '@lang('You submitted your review for moderation.')' }"
+            :callback="() => window.document.getElementById('review-form')?.close()"
             v-slot="{ variables, mutate, mutated }"
         >
             <form v-on:submit.prevent="mutate">
@@ -72,7 +73,6 @@
                         <div class="flex flex-col gap-y-2 w-full mt-2">
                             <x-rapidez::button.primary
                                 v-bind:disabled="variables.ratings.length == 0"
-                                v-on:click="window.document.getElementById('review-form')?.close()"
                                 class="text-base w-full"
                                 type="submit"
                                 data-testid="submit-review"
